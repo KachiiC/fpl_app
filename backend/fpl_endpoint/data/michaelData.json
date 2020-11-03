@@ -1,0 +1,244 @@
+[
+    {
+        "current": [
+            {
+                "event": 1,
+                "points": 51,
+                "total_points": 51,
+                "rank": 2534686,
+                "rank_sort": 2568257,
+                "overall_rank": 2534686,
+                "bank": 0,
+                "value": 1000,
+                "event_transfers": 0,
+                "event_transfers_cost": 0,
+                "points_on_bench": 0
+            },
+            {
+                "event": 2,
+                "points": 91,
+                "total_points": 142,
+                "rank": 316865,
+                "rank_sort": 320123,
+                "overall_rank": 472437,
+                "bank": 5,
+                "value": 999,
+                "event_transfers": 1,
+                "event_transfers_cost": 0,
+                "points_on_bench": 0
+            },
+            {
+                "event": 3,
+                "points": 28,
+                "total_points": 170,
+                "rank": 6337503,
+                "rank_sort": 6342778,
+                "overall_rank": 1334342,
+                "bank": 10,
+                "value": 1000,
+                "event_transfers": 1,
+                "event_transfers_cost": 0,
+                "points_on_bench": 2
+            },
+            {
+                "event": 4,
+                "points": 35,
+                "total_points": 201,
+                "rank": 5439738,
+                "rank_sort": 5445496,
+                "overall_rank": 2625291,
+                "bank": 25,
+                "value": 999,
+                "event_transfers": 2,
+                "event_transfers_cost": 4,
+                "points_on_bench": 2
+            },
+            {
+                "event": 5,
+                "points": 64,
+                "total_points": 265,
+                "rank": 2936029,
+                "rank_sort": 2948550,
+                "overall_rank": 2396429,
+                "bank": 4,
+                "value": 994,
+                "event_transfers": 0,
+                "event_transfers_cost": 0,
+                "points_on_bench": 14
+            },
+            {
+                "event": 6,
+                "points": 37,
+                "total_points": 298,
+                "rank": 5919687,
+                "rank_sort": 5926230,
+                "overall_rank": 3202346,
+                "bank": 3,
+                "value": 1002,
+                "event_transfers": 2,
+                "event_transfers_cost": 4,
+                "points_on_bench": 17
+            },
+            {
+                "event": 7,
+                "points": 68,
+                "total_points": 366,
+                "rank": 850345,
+                "rank_sort": 860905,
+                "overall_rank": 2493654,
+                "bank": 3,
+                "value": 1004,
+                "event_transfers": 0,
+                "event_transfers_cost": 0,
+                "points_on_bench": 3
+            }
+        ],
+        "past": [
+            {
+                "season_name": "2013/14",
+                "total_points": 1688,
+                "rank": 2058073
+            },
+            {
+                "season_name": "2015/16",
+                "total_points": 1976,
+                "rank": 776670
+            },
+            {
+                "season_name": "2016/17",
+                "total_points": 1933,
+                "rank": 962292
+            },
+            {
+                "season_name": "2017/18",
+                "total_points": 1873,
+                "rank": 2234375
+            },
+            {
+                "season_name": "2018/19",
+                "total_points": 1974,
+                "rank": 2198087
+            },
+            {
+                "season_name": "2019/20",
+                "total_points": 1856,
+                "rank": 3618420
+            }
+        ],
+        "chips": [
+            {
+                "name": "wildcard",
+                "time": "2020-10-17T07:13:32.184799Z",
+                "event": 5
+            }
+        ]
+    },
+    {
+        "id": 684633,
+        "joined_time": "2020-08-17T14:37:12.143364Z",
+        "started_event": 1,
+        "favourite_team": null,
+        "player_first_name": "Kacheok",
+        "player_last_name": "Cheong",
+        "player_region_id": 241,
+        "player_region_name": "England",
+        "player_region_iso_code_short": "EN",
+        "player_region_iso_code_long": "ENG",
+        "summary_overall_points": 417,
+        "summary_overall_rank": 568203,
+        "summary_event_points": 51,
+        "summary_event_rank": 4257397,
+        "current_event": 7,
+        "leagues": {
+            "classic": [
+                {
+                    "id": 261,
+                    "name": "England",
+                    "short_name": "region-241",
+                    "created": "2020-08-15T09:00:51.512249Z",
+                    "closed": false,
+                    "rank": null,
+                    "max_entries": null,
+                    "league_type": "s",
+                    "scoring": "c",
+                    "admin_entry": null,
+                    "start_event": 1,
+                    "entry_rank": 140788,
+                    "entry_last_rank": 113512,
+                    "entry_can_leave": false,
+                    "entry_can_admin": false,
+                    "entry_can_invite": false
+                },
+                {
+                    "id": 276,
+                    "name": "Gameweek 1",
+                    "short_name": "event-1",
+                    "created": "2020-08-15T09:00:52.298412Z",
+                    "closed": false,
+                    "rank": null,
+                    "max_entries": null,
+                    "league_type": "s",
+                    "scoring": "c",
+                    "admin_entry": null,
+                    "start_event": 1,
+                    "entry_rank": 440840,
+                    "entry_last_rank": 379873,
+                    "entry_can_leave": false,
+                    "entry_can_admin": false,
+                    "entry_can_invite": false
+                },
+                {
+                    "id": 314,
+                    "name": "Overall",
+                    "short_name": "overall",
+                    "created": "2020-08-15T09:00:54.021038Z",
+                    "closed": false,
+                    "rank": null,
+                    "max_entries": null,
+                    "league_type": "s",
+                    "scoring": "c",
+                    "admin_entry": null,
+                    "start_event": 1,
+                    "entry_rank": 568203,
+                    "entry_last_rank": 381587,
+                    "entry_can_leave": false,
+                    "entry_can_admin": false,
+                    "entry_can_invite": false
+                },
+                {
+                    "id": 357383,
+                    "name": "London Mandem",
+                    "short_name": null,
+                    "created": "2020-08-25T22:41:55.449080Z",
+                    "closed": false,
+                    "rank": null,
+                    "max_entries": null,
+                    "league_type": "x",
+                    "scoring": "c",
+                    "admin_entry": 684633,
+                    "start_event": 1,
+                    "entry_rank": 2,
+                    "entry_last_rank": 2,
+                    "entry_can_leave": false,
+                    "entry_can_admin": true,
+                    "entry_can_invite": true
+                }
+            ],
+            "h2h": [],
+            "cup": {
+                "matches": [],
+                "status": {
+                    "qualification_event": 16,
+                    "qualification_numbers": 4194304,
+                    "qualification_rank": null,
+                    "qualification_state": "NOT_STARTED"
+                }
+            }
+        },
+        "name": "6th attempt to win",
+        "kit": null,
+        "last_deadline_bank": 11,
+        "last_deadline_value": 1022,
+        "last_deadline_total_transfers": 6
+    }
+]

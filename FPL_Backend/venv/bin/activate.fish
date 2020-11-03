@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/kach/Development/GitHub/Projects/FPL_Backend/venv"
+set -gx VIRTUAL_ENV "/Users/kach/Development/GitHub/Projects/FPL_App/fpl_backend/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

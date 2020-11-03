@@ -1,4 +1,4 @@
-#!/Users/kach/Development/GitHub/Projects/FPL_Backend/venv/bin/python
+#!/Users/kach/Development/GitHub/Projects/FPL_App/fpl_backend/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
