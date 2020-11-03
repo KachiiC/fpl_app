@@ -11,6 +11,7 @@ def create_all_data(data_location):
                 player_id=data[1]["id"],
                 game_week=match["event"],
                 game_week_points=match["points"],
+                points_total=match["total_points"],
                 team_value=match["value"],
                 game_week_transfers=match["event_transfers"],
                 game_week_transfers_cost=match["event_transfers_cost"],

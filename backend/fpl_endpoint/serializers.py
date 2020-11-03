@@ -5,7 +5,7 @@ from .models import MatchDay, Player
 class MatchDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = MatchDay
-        fields = ('player_id', 'game_week', 'game_week_points', 'team_value', 'game_week_transfers',
+        fields = ('player_id', 'game_week', 'game_week_points', 'points_total ', 'team_value', 'game_week_transfers',
                   'game_week_transfers_cost', 'bench_points')
 
 
