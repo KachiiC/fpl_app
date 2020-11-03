@@ -5,10 +5,18 @@ from fpl_endpoint.management.commands.repoppers import create_all_data
 
 YOUTUBE_DATA_DIR = os.getcwd() + "/fpl_endpoints/data"
 
+data_point = '/fpl_endpoint/data/{}Data.json'
+
+players = ["ant", "dan", "elijha", "fara", "hayden", "kach", "michael", "ricky", "shirley", "zeen"]
+
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
         MatchDay.objects.all().delete()
-        create_all_data(os.getcwd() + "/fpl_endpoint/data/kachData.json")
+        Player.objects.all().delete()
 
-        print("repop for your data successful!")
+        for player in players:
+            create_all_data(os.getcwd() + data_point.format(player))
+            print(f"repop for {player} successful")
+
+    print("All Repops Complete")

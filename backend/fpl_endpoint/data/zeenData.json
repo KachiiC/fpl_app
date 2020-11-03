@@ -134,20 +134,20 @@
         ]
     },
     {
-        "id": 684633,
-        "joined_time": "2020-08-17T14:37:12.143364Z",
+        "id": 1029246,
+        "joined_time": "2020-08-20T10:53:39.696492Z",
         "started_event": 1,
         "favourite_team": null,
-        "player_first_name": "Kacheok",
-        "player_last_name": "Cheong",
+        "player_first_name": "Zeen",
+        "player_last_name": "Lam",
         "player_region_id": 241,
         "player_region_name": "England",
         "player_region_iso_code_short": "EN",
         "player_region_iso_code_long": "ENG",
-        "summary_overall_points": 417,
-        "summary_overall_rank": 568203,
-        "summary_event_points": 51,
-        "summary_event_rank": 4257397,
+        "summary_overall_points": 382,
+        "summary_overall_rank": 1748536,
+        "summary_event_points": 73,
+        "summary_event_rank": 426826,
         "current_event": 7,
         "leagues": {
             "classic": [
@@ -163,8 +163,8 @@
                     "scoring": "c",
                     "admin_entry": null,
                     "start_event": 1,
-                    "entry_rank": 140788,
-                    "entry_last_rank": 113512,
+                    "entry_rank": 544401,
+                    "entry_last_rank": 814502,
                     "entry_can_leave": false,
                     "entry_can_admin": false,
                     "entry_can_invite": false
@@ -181,8 +181,8 @@
                     "scoring": "c",
                     "admin_entry": null,
                     "start_event": 1,
-                    "entry_rank": 440840,
-                    "entry_last_rank": 379873,
+                    "entry_rank": 1727117,
+                    "entry_last_rank": 2597506,
                     "entry_can_leave": false,
                     "entry_can_admin": false,
                     "entry_can_invite": false
@@ -199,8 +199,8 @@
                     "scoring": "c",
                     "admin_entry": null,
                     "start_event": 1,
-                    "entry_rank": 568203,
-                    "entry_last_rank": 381587,
+                    "entry_rank": 1748536,
+                    "entry_last_rank": 2643797,
                     "entry_can_leave": false,
                     "entry_can_admin": false,
                     "entry_can_invite": false
@@ -217,11 +217,11 @@
                     "scoring": "c",
                     "admin_entry": 684633,
                     "start_event": 1,
-                    "entry_rank": 2,
-                    "entry_last_rank": 2,
-                    "entry_can_leave": false,
-                    "entry_can_admin": true,
-                    "entry_can_invite": true
+                    "entry_rank": 6,
+                    "entry_last_rank": 7,
+                    "entry_can_leave": true,
+                    "entry_can_admin": false,
+                    "entry_can_invite": false
                 }
             ],
             "h2h": [],
@@ -235,10 +235,10 @@
                 }
             }
         },
-        "name": "6th attempt to win",
+        "name": "We Are Coders",
         "kit": null,
-        "last_deadline_bank": 11,
-        "last_deadline_value": 1022,
-        "last_deadline_total_transfers": 6
+        "last_deadline_bank": 22,
+        "last_deadline_value": 1003,
+        "last_deadline_total_transfers": 3
     }
 ]

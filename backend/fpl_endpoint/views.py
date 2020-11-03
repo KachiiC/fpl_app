@@ -7,14 +7,14 @@ from .serializers import PlayerSerializer, MatchDaySerializer
 @api_view(['GET', 'POST'])
 def players_list(request):
     if request.method == 'GET':
-        data = MatchDay.objects.all()
+        data = Player.objects.all()
 
-        serializer = MatchDaySerializer(data, context={'request': request}, many=True)
+        serializer = PlayerSerializer(data, context={'request': request}, many=True)
 
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = MatchDaySerializer(data=request.data, many=True)
+        serializer = PlayerSerializer(data=request.data, many=True)
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)

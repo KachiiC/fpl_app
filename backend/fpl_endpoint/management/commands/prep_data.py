@@ -49,7 +49,7 @@ DATA_ENDPOINTS = [
 ]
 
 MATCH_ENDPOINT_URL = "https://fantasy.premierleague.com/api/entry/{}/history/"
-PLAYER_ENDPOINT_URL = "https://fantasy.premierleague.com/api/entry/684633/"
+PLAYER_ENDPOINT_URL = "https://fantasy.premierleague.com/api/entry/{}/"
 
 
 class Command(BaseCommand):
