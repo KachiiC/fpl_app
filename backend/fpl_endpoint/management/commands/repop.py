@@ -17,6 +17,39 @@ class Command(BaseCommand):
 
         for player in players:
             create_all_data(os.getcwd() + data_point.format(player))
-            print(f"repop for {player} successful")
 
-    print("All Repops Complete")
+        # players_list = Player.objects.all()
+        match_days = MatchDay.objects.all()
+
+        for match in match_days:
+            if match.player_id == 2341747:
+                player_info = Player.objects.get(player_id=2341747)
+                player_info.matches.add(match)
+            elif match.player_id == 158159:
+                player_info = Player.objects.get(player_id=158159)
+                player_info.matches.add(match)
+            elif match.player_id == 213553:
+                player_info = Player.objects.get(player_id=213553)
+                player_info.matches.add(match)
+            elif match.player_id == 34170:
+                player_info = Player.objects.get(player_id=34170)
+                player_info.matches.add(match)
+            elif match.player_id == 1639999:
+                player_info = Player.objects.get(player_id=1639999)
+                player_info.matches.add(match)
+            elif match.player_id == 684633:
+                player_info = Player.objects.get(player_id=684633)
+                player_info.matches.add(match)
+            elif match.player_id == 1867039:
+                player_info = Player.objects.get(player_id=1867039)
+                player_info.matches.add(match)
+            elif match.player_id == 979495:
+                player_info = Player.objects.get(player_id=979495)
+                player_info.matches.add(match)
+            elif match.player_id == 4316712:
+                player_info = Player.objects.get(player_id=4316712)
+                player_info.matches.add(match)
+            elif match.player_id == 1029246:
+                player_info = Player.objects.get(player_id=1029246)
+                player_info.matches.add(match)
+        print("Matches Repops Complete")

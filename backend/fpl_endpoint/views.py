@@ -20,3 +20,20 @@ def players_list(request):
             return Response(status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST'])
+def match_list(request):
+    if request.method == 'GET':
+        data = MatchDay.objects.all()
+
+        serializer = MatchDaySerializer(data, context={'request': request}, many=True)
+
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = MatchDaySerializer(data=request.data, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
