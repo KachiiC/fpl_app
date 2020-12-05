@@ -22,7 +22,8 @@ const GameWeekTransfersTable = () => {
 
         return (
             <tr>
-                <td>{player.player_name}</td>
+                <td>{PlayerListData.indexOf(player) + 1}</td>
+                <>{player.player_name}</>
                 {playersWeek}
                 <td>{totalLost}</td>
             </tr>
@@ -34,6 +35,7 @@ const GameWeekTransfersTable = () => {
             <h1>Points Spent on Transfers</h1>
             <table>
                 <tr>
+                    <th>Rank</th>
                     <th>Players</th>
                     {GameWeeks}
                     <th>Total</th>
