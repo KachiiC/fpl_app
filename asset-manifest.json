@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/fpl_app/static/css/main.d63cb5d4.chunk.css",
-    "main.js": "/fpl_app/static/js/main.dd53493e.chunk.js",
-    "main.js.map": "/fpl_app/static/js/main.dd53493e.chunk.js.map",
+    "main.js": "/fpl_app/static/js/main.2b90a9cd.chunk.js",
+    "main.js.map": "/fpl_app/static/js/main.2b90a9cd.chunk.js.map",
     "runtime-main.js": "/fpl_app/static/js/runtime-main.76c4009d.js",
     "runtime-main.js.map": "/fpl_app/static/js/runtime-main.76c4009d.js.map",
-    "static/js/2.44902a2e.chunk.js": "/fpl_app/static/js/2.44902a2e.chunk.js",
-    "static/js/2.44902a2e.chunk.js.map": "/fpl_app/static/js/2.44902a2e.chunk.js.map",
+    "static/js/2.1154351d.chunk.js": "/fpl_app/static/js/2.1154351d.chunk.js",
+    "static/js/2.1154351d.chunk.js.map": "/fpl_app/static/js/2.1154351d.chunk.js.map",
     "static/js/3.00d8c730.chunk.js": "/fpl_app/static/js/3.00d8c730.chunk.js",
     "static/js/3.00d8c730.chunk.js.map": "/fpl_app/static/js/3.00d8c730.chunk.js.map",
     "index.html": "/fpl_app/index.html",
     "static/css/main.d63cb5d4.chunk.css.map": "/fpl_app/static/css/main.d63cb5d4.chunk.css.map",
-    "static/js/2.44902a2e.chunk.js.LICENSE.txt": "/fpl_app/static/js/2.44902a2e.chunk.js.LICENSE.txt"
+    "static/js/2.1154351d.chunk.js.LICENSE.txt": "/fpl_app/static/js/2.1154351d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.76c4009d.js",
-    "static/js/2.44902a2e.chunk.js",
+    "static/js/2.1154351d.chunk.js",
     "static/css/main.d63cb5d4.chunk.css",
-    "static/js/main.dd53493e.chunk.js"
+    "static/js/main.2b90a9cd.chunk.js"
   ]
 }
