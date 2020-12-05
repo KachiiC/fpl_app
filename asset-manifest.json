@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/fpl_app/static/css/main.d63cb5d4.chunk.css",
-    "main.js": "/fpl_app/static/js/main.9c6c7726.chunk.js",
-    "main.js.map": "/fpl_app/static/js/main.9c6c7726.chunk.js.map",
+    "main.js": "/fpl_app/static/js/main.d56ee427.chunk.js",
+    "main.js.map": "/fpl_app/static/js/main.d56ee427.chunk.js.map",
     "runtime-main.js": "/fpl_app/static/js/runtime-main.76c4009d.js",
     "runtime-main.js.map": "/fpl_app/static/js/runtime-main.76c4009d.js.map",
     "static/js/2.44902a2e.chunk.js": "/fpl_app/static/js/2.44902a2e.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.76c4009d.js",
     "static/js/2.44902a2e.chunk.js",
     "static/css/main.d63cb5d4.chunk.css",
-    "static/js/main.9c6c7726.chunk.js"
+    "static/js/main.d56ee427.chunk.js"
   ]
 }
