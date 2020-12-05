@@ -34,13 +34,15 @@ const GameWeekTransfersTable = () => {
         <div className="table-container">
             <h1>Points Spent on Transfers</h1>
             <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Players</th>
-                    {GameWeeks}
-                    <th>Total</th>
-                </tr>
-                {playerGameWeeks}
+                <tbody>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Players</th>
+                        {GameWeeks}
+                        <th>Total</th>
+                    </tr>
+                    {playerGameWeeks}
+                </tbody>
             </table>
         </div>
     )

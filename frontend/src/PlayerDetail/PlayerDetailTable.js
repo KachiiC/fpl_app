@@ -36,10 +36,12 @@ const PlayerDetailTable = (props) => {
         <div className="table-container">
             <h1>{PlayerData.player_name}</h1>
             <table>
-                <tr>
-                    {menuHeadings}
-                </tr>
-                {gameWeeks}
+                <tbody>
+                    <tr>
+                        {menuHeadings}
+                    </tr>
+                    {gameWeeks}
+                </tbody>
             </table>
         </div>
     )

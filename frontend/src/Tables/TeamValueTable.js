@@ -30,12 +30,14 @@ const TeamValueTable = () => {
         <div className="table-container">
             <h1>Team Value</h1>
             <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Players</th>
-                    {GameWeeks}
-                </tr>
-                {playerGameWeeks}
+                <tbody>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Players</th>
+                        {GameWeeks}
+                    </tr>
+                    {playerGameWeeks}
+                </tbody>
             </table>
         </div>
     )
