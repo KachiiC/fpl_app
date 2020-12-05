@@ -23,7 +23,7 @@ const GameWeekTransfersTable = () => {
         return (
             <tr>
                 <td>{PlayerListData.indexOf(player) + 1}</td>
-                <>{player.player_name}</>
+                <td>{player.player_name}</td>
                 {playersWeek}
                 <td>{totalLost}</td>
             </tr>
