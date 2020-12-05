@@ -4,10 +4,10 @@
 
 .table-container {
   text-align: center;
-  border: 1px black solid;
 }
 
 table {
+  margin: 50px auto;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 80%;
@@ -16,6 +16,7 @@ table {
 td, th {
   border: 1px solid #dddddd;
   text-align: center;
+  width: 20px;
   padding: 8px;
 }
 
@@ -25,5 +26,49 @@ tr {
 }
 
 tr:nth-child(even){
-  background-color: grey;
+  background-color: rgb(206, 206, 206);
+}
+
+.component-container{
+  width: 90%;
+  margin: auto;
+}
+
+.single-tab {
+  width: 200px;
+  border: 1px solid black;
+}
+
+.single-tab:hover {
+  cursor: pointer;
+  border-bottom: 2px solid rgb(30, 111, 250);
+}
+
+.tabs-row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.display-content {
+  padding: 15px;
+  text-align: left;
+  min-height: 300px;
+}
+
+.player-tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  border: 1px black solid;
+}
+
+.player-single-tab {
+  width: 100px;
+  text-align: center;
+  margin: auto;
+}
+
+.player-single-tab:hover {
+  cursor: pointer;
+  border-bottom: 2px solid rgb(30, 111, 250);
 }
