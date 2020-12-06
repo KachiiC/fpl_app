@@ -1,0 +1,24 @@
+.nav-links {
+    background-color: rgb(29, 29, 29) !important;
+    cursor: pointer;
+    font-weight: 600;
+    color: white !important;
+    font-size: 18px;
+    text-transform: capitalize;
+    margin: 10px;
+    
+}
+
+.nav-background, 
+.nav-dropdown,
+.nav-dropdown-menu {
+    background-color: rgb(29, 29, 29) !important;
+    color: white !important;
+}
+
+.nav-dropdown-menu-link {
+    background-color: rgb(29, 29, 29) !important;
+    font-size: 20px;
+    color: white !important;
+    font-weight: 600;
+}

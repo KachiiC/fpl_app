@@ -106,8 +106,8 @@ const PlayerListData = [
             {
                 "player_id": 2341747,
                 "gameweek": 11,
-                "game_week_points": 49,
-                "points_total": 618,
+                "game_week_points": 76,
+                "points_total": 645,
                 "team_value": 1016,
                 "game_week_transfers": 2,
                 "game_week_transfers_cost": 4,
@@ -222,12 +222,12 @@ const PlayerListData = [
             {
                 "player_id": 158159,
                 "gameweek": 11,
-                "game_week_points": 33,
-                "points_total": 635,
+                "game_week_points": 60,
+                "points_total": 662,
                 "team_value": 1024,
                 "game_week_transfers": 2,
                 "game_week_transfers_cost": 0,
-                "bench_points": 0
+                "bench_points": 6
             }
         ]
     },
@@ -338,8 +338,8 @@ const PlayerListData = [
             {
                 "player_id": 213553,
                 "gameweek": 11,
-                "game_week_points": 26,
-                "points_total": 589,
+                "game_week_points": 53,
+                "points_total": 616,
                 "team_value": 1025,
                 "game_week_transfers": 1,
                 "game_week_transfers_cost": 0,
@@ -454,12 +454,12 @@ const PlayerListData = [
             {
                 "player_id": 34170,
                 "gameweek": 11,
-                "game_week_points": 16,
-                "points_total": 608,
+                "game_week_points": 75,
+                "points_total": 667,
                 "team_value": 1027,
                 "game_week_transfers": 1,
                 "game_week_transfers_cost": 0,
-                "bench_points": 0
+                "bench_points": 2
             }
         ]
     },
@@ -570,8 +570,8 @@ const PlayerListData = [
             {
                 "player_id": 1639999,
                 "gameweek": 11,
-                "game_week_points": 34,
-                "points_total": 529,
+                "game_week_points": 47,
+                "points_total": 542,
                 "team_value": 1016,
                 "game_week_transfers": 2,
                 "game_week_transfers_cost": 4,
@@ -686,8 +686,8 @@ const PlayerListData = [
             {
                 "player_id": 684633,
                 "gameweek": 11,
-                "game_week_points": 30,
-                "points_total": 632,
+                "game_week_points": 76,
+                "points_total": 678,
                 "team_value": 1025,
                 "game_week_transfers": 1,
                 "game_week_transfers_cost": 0,
@@ -802,8 +802,8 @@ const PlayerListData = [
             {
                 "player_id": 1867039,
                 "gameweek": 11,
-                "game_week_points": 54,
-                "points_total": 555,
+                "game_week_points": 57,
+                "points_total": 558,
                 "team_value": 1007,
                 "game_week_transfers": 0,
                 "game_week_transfers_cost": 0,
@@ -918,12 +918,12 @@ const PlayerListData = [
             {
                 "player_id": 979495,
                 "gameweek": 11,
-                "game_week_points": 16,
-                "points_total": 573,
+                "game_week_points": 46,
+                "points_total": 603,
                 "team_value": 1003,
                 "game_week_transfers": 0,
                 "game_week_transfers_cost": 0,
-                "bench_points": 2
+                "bench_points": 4
             }
         ]
     },
@@ -1034,12 +1034,12 @@ const PlayerListData = [
             {
                 "player_id": 4316712,
                 "gameweek": 11,
-                "game_week_points": 28,
-                "points_total": 586,
+                "game_week_points": 70,
+                "points_total": 628,
                 "team_value": 1007,
                 "game_week_transfers": 0,
                 "game_week_transfers_cost": 0,
-                "bench_points": 0
+                "bench_points": 1
             }
         ]
     },
@@ -1150,8 +1150,8 @@ const PlayerListData = [
             {
                 "player_id": 1029246,
                 "gameweek": 11,
-                "game_week_points": 46,
-                "points_total": 569,
+                "game_week_points": 48,
+                "points_total": 571,
                 "team_value": 1017,
                 "game_week_transfers": 2,
                 "game_week_transfers_cost": 0,

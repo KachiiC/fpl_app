@@ -2,35 +2,35 @@ import React from 'react'
 import PlayerListData from '../Data/PlayerListData'
 
 const WeekByWeekTable = () => {
-
     
     const GameWeeks = PlayerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
 
-    const allOfThem = [];
+    const allOfThePoints = [];
     const allOfTheAverages = [];
+    const numberOfMatchDays = PlayerListData[0].matches.length - 1
 
-    for (let x = 0; x < PlayerListData[0].matches.length - 1; x++) {
-        for (let y = 0; y < PlayerListData[0].matches.length - 1; y++) {
-            allOfThem.push(PlayerListData[y].matches[x].points_total);
+    for (let x = 0; x < numberOfMatchDays; x++) {
+        for (let y = 0; y < numberOfMatchDays; y++) {
+            allOfThePoints.push(PlayerListData[y].matches[x].points_total);
         }
     }
 
-    for (let i = 0; i < allOfThem.length -1;i += PlayerListData[0].matches.length - 1) {
+    for (let i = 0; i < allOfThePoints.length -1;i += numberOfMatchDays) {
         allOfTheAverages.push(
-            allOfThem.slice(i, i + PlayerListData[0].matches.length - 1)
+            allOfThePoints.slice(i, i + numberOfMatchDays)
             .reduce((a, b) => a + b) / PlayerListData.length
         );
     }
 
+    const displayAverages = allOfTheAverages.map((average, index) => <td key={index}>{average}</td>)
+    const averageTotal  = PlayerListData.map((player) => player.matches[player.matches.length -1].points_total).reduce((a,b) => a+b)/PlayerListData.length
+    const sortedByPoints = PlayerListData.sort((a, b) => b.matches[b.matches.length - 1].points_total - a.matches[a.matches.length - 1].points_total)
 
-    const displayAverages = allOfTheAverages.map((average) => <td>{average}</td>)
-    const averageTotal  = (PlayerListData.map((player) => player.matches[player.matches.length -1].points_total).reduce((a,b) => a+b)/PlayerListData.length)
+    const playerGameWeeks = sortedByPoints.map((player, index) => {
 
-    const playerGameWeeks = PlayerListData.map((player) => {
-
-        const playersWeek = player.matches.map((matchweek) => {
+        const playersWeek = player.matches.map((matchweek, index) => {
             const renderLogic = matchweek.points_total > allOfTheAverages[player.matches.indexOf(matchweek)] ?
-            <td className="good-week">{matchweek.points_total}</td> : <td className="bad-week">{matchweek.points_total}</td>
+            <td className="good-week" key={index}>{matchweek.points_total}</td> : <td className="bad-week">{matchweek.points_total}</td>
 
             return (
                 <>
@@ -41,7 +41,7 @@ const WeekByWeekTable = () => {
         })
 
         return (
-            <tr>
+            <tr key={index}>
                 <td>{PlayerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
@@ -51,7 +51,7 @@ const WeekByWeekTable = () => {
 
     return (
         <div className="table-container">
-            <h1>Entire Season Table</h1>
+            <h2>Week by Week Totals</h2>
             <table>
                 <tbody>
                     <tr>

@@ -6,18 +6,19 @@ const PointsScoredTable = () => {
     const GameWeeks = PlayerListData[0].matches.map((match, index) => 
     <th key={index}>GW{match.gameweek}</th>)
 
-    const allOfThem = [];
+    const allOfThePoints = [];
     const allOfTheAverages = [];
+    const numberOfMatchDays = PlayerListData[0].matches.length - 1
 
-    for (let x = 0; x < PlayerListData[0].matches.length - 1; x++) {
-        for (let y = 0; y < PlayerListData[0].matches.length - 1; y++) {
-            allOfThem.push(PlayerListData[y].matches[x].game_week_points);
+    for (let x = 0; x < numberOfMatchDays; x++) {
+        for (let y = 0; y < numberOfMatchDays; y++) {
+            allOfThePoints.push(PlayerListData[y].matches[x].game_week_points);
         }
     }
 
-    for (let i = 0; i < allOfThem.length; i += PlayerListData[0].matches.length) {
+    for (let i = 0; i < allOfThePoints.length -1;i += numberOfMatchDays) {
         allOfTheAverages.push(
-            allOfThem.slice(i, i + PlayerListData[0].matches.length)
+            allOfThePoints.slice(i, i + numberOfMatchDays)
             .reduce((a, b) => a + b) / PlayerListData.length
         );
     }
@@ -57,7 +58,7 @@ const PointsScoredTable = () => {
 
     return (
         <div className="table-container">
-            <h1>Current Table</h1>
+            <h2>Current Table</h2>
             <table>
                 <tbody>
                     <tr>
