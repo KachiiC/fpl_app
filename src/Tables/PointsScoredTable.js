@@ -15,7 +15,7 @@ const PointsScoredTable = () => {
         }
     }
 
-    for (let i = 0; i < allOfThem.length;i += PlayerListData[0].matches.length - 1) {
+    for (let i = 0; i < allOfThem.length; i += PlayerListData[0].matches.length) {
         allOfTheAverages.push(
             allOfThem.slice(i, i + PlayerListData[0].matches.length)
             .reduce((a, b) => a + b) / PlayerListData.length
@@ -71,7 +71,6 @@ const PointsScoredTable = () => {
                         <td>-</td>
                         <td>Average</td>
                         {displayAverages}
-                        <td>0</td>
                         <td>{totalAverage}</td>
                     </tr>
                 </tbody>

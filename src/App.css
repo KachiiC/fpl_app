@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  height: 100vh;
+  
+}
+
+.App-content {
+  margin: 50px auto;
+  height: 100vh;
 }
 
 .table-container {
