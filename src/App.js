@@ -2,6 +2,7 @@ import React from 'react'
 // CSS
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './table.css'
 // Components
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SiteNavbar from './Components/SiteNavbar'
