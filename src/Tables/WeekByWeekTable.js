@@ -5,25 +5,25 @@ const WeekByWeekTable = () => {
     
     const GameWeeks = PlayerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
 
-    const allOfThePoints = [];
+    const allOfThePointsScored = [];
     const allOfTheAverages = [];
-    const numberOfMatchDays = PlayerListData[0].matches.length - 1
-
-    for (let x = 0; x < numberOfMatchDays; x++) {
-        for (let y = 0; y < numberOfMatchDays; y++) {
-            allOfThePoints.push(PlayerListData[y].matches[x].points_total);
+    const numberOfMatchDays = PlayerListData[0].matches.length;
+    const numberOfPlayers = PlayerListData.length;
+    
+    for (let y = 0; y < numberOfMatchDays; y++) {
+        for (let x = 0; x < PlayerListData.length; x++) {
+            allOfThePointsScored.push(PlayerListData[x].matches[y].points_total);
         }
     }
-
-    for (let i = 0; i < allOfThePoints.length -1;i += numberOfMatchDays) {
+    
+    for (let i = 0; i < allOfThePointsScored.length; i += numberOfPlayers) {
         allOfTheAverages.push(
-            allOfThePoints.slice(i, i + numberOfMatchDays)
-            .reduce((a, b) => a + b) / PlayerListData.length
-        );
+            allOfThePointsScored.slice(i, i + numberOfPlayers)
+            .reduce((a, b) => a + b) /numberOfPlayers
+        )
     }
 
     const displayAverages = allOfTheAverages.map((average, index) => <td key={index}>{average}</td>)
-    const averageTotal  = PlayerListData.map((player) => player.matches[player.matches.length -1].points_total).reduce((a,b) => a+b)/PlayerListData.length
     const sortedByPoints = PlayerListData.sort((a, b) => b.matches[b.matches.length - 1].points_total - a.matches[a.matches.length - 1].points_total)
 
     const playerGameWeeks = sortedByPoints.map((player, index) => {
@@ -64,7 +64,6 @@ const WeekByWeekTable = () => {
                         <td>-</td>
                         <td>Average</td>
                         {displayAverages}
-                        <td>{averageTotal}</td>
                     </tr>
                 </tbody>
             </table>

@@ -3,8 +3,7 @@ import PlayerListData from '../Data/PlayerListData'
 
 const GameWeekTransfersTable = () => {
     
-    const GameWeeks = PlayerListData[0].matches.map((match) => 
-    <th>GW{match.gameweek}</th>)
+    const GameWeeks = PlayerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
 
     const sortTeamsByTransferPoints = PlayerListData.sort((a, b) => {
         return b.matches.map((week) => week.game_week_transfers_cost).reduce((a,b) => a+b) - a.matches.map((week) => week.game_week_transfers_cost).reduce((a,b) => a+b)

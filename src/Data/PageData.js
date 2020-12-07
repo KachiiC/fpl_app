@@ -1,12 +1,11 @@
 import React from 'react'
 // Data
-import PlayerListData from 'Data/PlayerListData'
 // Tables
 import WeekByWeekTable from 'Tables/WeekByWeekTable'
 import PointsOnBenchTable from 'Tables/PointsOnBenchTable'
 import TeamValueTable from 'Tables/TeamValueTable'
 import GameWeekTransfers from 'Tables/GameWeekTransfers'
-import PlayerDetailTable from 'PlayerDetail/PlayerDetailTable'
+
 
 const PageData = [
     {

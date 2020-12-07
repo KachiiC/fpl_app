@@ -6,21 +6,22 @@ const PointsScoredTable = () => {
     const GameWeeks = PlayerListData[0].matches.map((match, index) => 
     <th key={index}>GW{match.gameweek}</th>)
 
-    const allOfThePoints = [];
+    const allOfThePointsScored = [];
     const allOfTheAverages = [];
-    const numberOfMatchDays = PlayerListData[0].matches.length - 1
-
-    for (let x = 0; x < numberOfMatchDays; x++) {
-        for (let y = 0; y < numberOfMatchDays; y++) {
-            allOfThePoints.push(PlayerListData[y].matches[x].game_week_points);
+    const numberOfMatchDays = PlayerListData[0].matches.length;
+    const numberOfPlayers = PlayerListData.length;
+    
+    for (let y = 0; y < numberOfMatchDays; y++) {
+        for (let x = 0; x < PlayerListData.length; x++) {
+            allOfThePointsScored.push(PlayerListData[x].matches[y].game_week_points);
         }
     }
-
-    for (let i = 0; i < allOfThePoints.length -1;i += numberOfMatchDays) {
+    
+    for (let i = 0; i < allOfThePointsScored.length; i += numberOfPlayers) {
         allOfTheAverages.push(
-            allOfThePoints.slice(i, i + numberOfMatchDays)
-            .reduce((a, b) => a + b) / PlayerListData.length
-        );
+            allOfThePointsScored.slice(i, i + numberOfPlayers)
+            .reduce((a, b) => a + b) /numberOfPlayers
+        )
     }
 
     const displayAverages = allOfTheAverages.map((average) => <td>{average}</td>)
@@ -45,13 +46,15 @@ const PointsScoredTable = () => {
 
         const totalPoints = player.matches.map((matchweek) =>  matchweek.game_week_points).reduce((a,b) => a+b)
         const totalLost = player.matches.map((matchweek) =>  matchweek.game_week_transfers_cost).reduce((a,b) => a+b)
+        const averageCompare = totalPoints - totalLost > totalAverage ? 
+        <td className="good-week">{totalPoints - totalLost}</td> : <td className="bad-week">{totalPoints - totalLost}</td>
 
         return (
             <tr key={index}>
                 <td>{PlayerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
-                <td>{totalPoints - totalLost}</td>
+                {averageCompare}
             </tr>
         )
     })

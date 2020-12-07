@@ -3,24 +3,27 @@ import PlayerListData from 'Data/PlayerListData'
 
 const TeamValueTable = () => {
 
-    const allOfThem = [];
+    const allOfThePointsScored = [];
     const allOfTheAverages = [];
-    const numberOfWeeks = PlayerListData[0].matches.length
-
-    for (let x = 0; x < numberOfWeeks; x++) {
-        for (let y = 0; y < PlayerListData.length; y++) {
-            allOfThem.push(PlayerListData[y].matches[x].game_week_points);
+    const numberOfMatchDays = PlayerListData[0].matches.length;
+    const numberOfPlayers = PlayerListData.length;
+    
+    for (let y = 0; y < numberOfMatchDays; y++) {
+        for (let x = 0; x < PlayerListData.length; x++) {
+            allOfThePointsScored.push(
+                Math.floor(PlayerListData[x].matches[y].team_value)
+            );
         }
     }
-
-    for (let i = 0; i < allOfThem.length; i += numberOfWeeks) {
+    
+    for (let i = 0; i < allOfThePointsScored.length; i += numberOfPlayers) {
         allOfTheAverages.push(
-            allOfThem.slice(i, i + numberOfWeeks)
-            .reduce((a, b) => a + b) / PlayerListData.length
-        );
+            allOfThePointsScored.slice(i, i + numberOfPlayers)
+            .reduce((a, b) => a + b) /numberOfPlayers
+        )
     }
 
-    const displayAverages = allOfTheAverages.map((average) => <td>{average}</td>)
+    const displayAverages = allOfTheAverages.map((average) => <td>{Math.floor(average)/10}M</td>)
     
     const GameWeeks = PlayerListData[0].matches.map((match) => 
     <th>GW{match.gameweek}</th>)
@@ -30,8 +33,15 @@ const TeamValueTable = () => {
     const playerGameWeeks = sortedByTeamValue.map((player) => {
 
         const playersWeek = player.matches.map((matchweek) => {
+
+            const renderLogic = matchweek.team_value > allOfTheAverages[player.matches.indexOf(matchweek)] ?
+            <td className="good-week">{Math.floor(matchweek.team_value)/10}</td> : 
+            <td className="bad-week">{Math.floor(matchweek.team_value)/10}</td>
+
             return (
-                <td>{matchweek.team_value/10}M</td>
+                <>
+                    {renderLogic}
+                </>
             )
         })
 
