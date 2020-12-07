@@ -1,5 +1,6 @@
 import React from 'react'
 import PlayerListData from '../Data/PlayerListData'
+import Table from 'react-bootstrap/Table'
 
 const GameWeekTransfersTable = () => {
     
@@ -32,7 +33,7 @@ const GameWeekTransfersTable = () => {
     return (
         <div className="table-container">
             <h1>Points Spent on Transfers</h1>
-            <table>
+            <Table responsive>
                 <tbody>
                     <tr>
                         <th>Rank</th>
@@ -42,7 +43,7 @@ const GameWeekTransfersTable = () => {
                     </tr>
                     {playerGameWeeks}
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 

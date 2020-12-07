@@ -1,5 +1,6 @@
 import React from 'react'
 import PlayerListData from 'Data/PlayerListData'
+import Table from 'react-bootstrap/Table'
 
 const TeamValueTable = () => {
 
@@ -57,7 +58,7 @@ const TeamValueTable = () => {
     return (
         <div className="table-container">
             <h2>Team Value</h2>
-            <table>
+            <Table responsive>
                 <tbody>
                     <tr>
                         <th>Rank</th>
@@ -71,7 +72,7 @@ const TeamValueTable = () => {
                         {displayAverages}
                     </tr>
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 

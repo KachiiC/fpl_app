@@ -1,5 +1,6 @@
 import React from 'react'
 import PlayerListData from '../Data/PlayerListData'
+import Table from 'react-bootstrap/Table'
 
 const PointsOnBenchTable = () => {
     
@@ -62,7 +63,7 @@ const PointsOnBenchTable = () => {
     return (
         <div className="table-container">
             <h1>Points Lost on bench</h1>
-            <table>
+            <Table responsive>
                 <tbody>
                     <tr>
                         <th>Rank</th>
@@ -78,7 +79,7 @@ const PointsOnBenchTable = () => {
                         <td></td>
                     </tr>
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 

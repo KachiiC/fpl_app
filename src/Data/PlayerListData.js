@@ -2,6 +2,9 @@ const PlayerListData = [
     {
         "player_name": "Anthony",
         "player_id": 2341747,
+        "points_total": 645,
+        "transfers_total": 15,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 2341747,
@@ -118,6 +121,9 @@ const PlayerListData = [
     {
         "player_name": "Dan",
         "player_id": 158159,
+        "points_total": 662,
+        "transfers_total": 14,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 158159,
@@ -234,6 +240,9 @@ const PlayerListData = [
     {
         "player_name": "Elijha",
         "player_id": 213553,
+        "points_total": 616,
+        "transfers_total": 13,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 213553,
@@ -350,6 +359,9 @@ const PlayerListData = [
     {
         "player_name": "Farhan",
         "player_id": 34170,
+        "points_total": 667,
+        "transfers_total": 9,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 34170,
@@ -466,6 +478,9 @@ const PlayerListData = [
     {
         "player_name": "Hayden",
         "player_id": 1639999,
+        "points_total": 542,
+        "transfers_total": 18,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 1639999,
@@ -582,6 +597,9 @@ const PlayerListData = [
     {
         "player_name": "Kacheok",
         "player_id": 684633,
+        "points_total": 678,
+        "transfers_total": 11,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 684633,
@@ -698,6 +716,9 @@ const PlayerListData = [
     {
         "player_name": "Michael",
         "player_id": 1867039,
+        "points_total": 558,
+        "transfers_total": 9,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 1867039,
@@ -814,6 +835,9 @@ const PlayerListData = [
     {
         "player_name": "Ricky",
         "player_id": 979495,
+        "points_total": 603,
+        "transfers_total": 11,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 979495,
@@ -930,6 +954,9 @@ const PlayerListData = [
     {
         "player_name": "Shirley",
         "player_id": 4316712,
+        "points_total": 628,
+        "transfers_total": 9,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 4316712,
@@ -1046,6 +1073,9 @@ const PlayerListData = [
     {
         "player_name": "Zeen",
         "player_id": 1029246,
+        "points_total": 571,
+        "transfers_total": 8,
+        "current_gameweek": 11,
         "matches": [
             {
                 "player_id": 1029246,

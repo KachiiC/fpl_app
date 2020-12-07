@@ -1,14 +1,15 @@
 import React from 'react'
 import PlayerListData from '../Data/PlayerListData'
+import Table from 'react-bootstrap/Table'
 
-const WeekByWeekTable = () => {
+const PointsByWeekTable = () => {
     
     const GameWeeks = PlayerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
-
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
     const numberOfMatchDays = PlayerListData[0].matches.length;
     const numberOfPlayers = PlayerListData.length;
+    const sortedByPoints = PlayerListData.sort((a, b) => b.points_total - a.points_total)
     
     for (let y = 0; y < numberOfMatchDays; y++) {
         for (let x = 0; x < PlayerListData.length; x++) {
@@ -20,26 +21,23 @@ const WeekByWeekTable = () => {
         allOfTheAverages.push(
             allOfThePointsScored.slice(i, i + numberOfPlayers)
             .reduce((a, b) => a + b) /numberOfPlayers
-        )
-    }
-
-    const displayAverages = allOfTheAverages.map((average, index) => <td key={index}>{average}</td>)
-    const sortedByPoints = PlayerListData.sort((a, b) => b.matches[b.matches.length - 1].points_total - a.matches[a.matches.length - 1].points_total)
-
-    const playerGameWeeks = sortedByPoints.map((player, index) => {
-
-        const playersWeek = player.matches.map((matchweek, index) => {
-            const renderLogic = matchweek.points_total > allOfTheAverages[player.matches.indexOf(matchweek)] ?
-            <td className="good-week" key={index}>{matchweek.points_total}</td> : <td className="bad-week">{matchweek.points_total}</td>
-
-            return (
-                <>
-                    {renderLogic}
-                </>
-
+            )
+        }
+        
+        const playerGameWeeks = sortedByPoints.map((player, index) => {
+            
+            const playersWeek = player.matches.map((matchweek, index) => {
+                
+                const renderLogic = matchweek.points_total > allOfTheAverages[player.matches.indexOf(matchweek)] ?
+                "good" : "bad"
+                
+                return (
+                    <td className={`${renderLogic}-week`} key={index}>
+                    {matchweek.points_total}
+                </td>
             )
         })
-
+        
         return (
             <tr key={index}>
                 <td>{PlayerListData.indexOf(player) + 1}</td>
@@ -48,11 +46,13 @@ const WeekByWeekTable = () => {
             </tr>
         )
     })
-
+    
+    const displayAverages = allOfTheAverages.map((average, index) => <td key={index}>{average}</td>)
+    
     return (
         <div className="table-container">
             <h2>Week by Week Totals</h2>
-            <table>
+            <Table responsive>
                 <tbody>
                     <tr>
                         <th>Rank</th>
@@ -66,10 +66,10 @@ const WeekByWeekTable = () => {
                         {displayAverages}
                     </tr>
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 
 }
 
-export default WeekByWeekTable
+export default PointsByWeekTable

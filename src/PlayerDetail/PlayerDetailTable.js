@@ -1,4 +1,5 @@
 import React from 'react'
+import Table from 'react-bootstrap/Table'
 
 const PlayerDetailTable = (props) => {
 
@@ -35,14 +36,14 @@ const PlayerDetailTable = (props) => {
     return (
         <div className="table-container">
             <h1>{PlayerData.player_name}</h1>
-            <table>
+            <Table responsive>
                 <tbody>
                     <tr>
                         {menuHeadings}
                     </tr>
                     {gameWeeks}
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 
