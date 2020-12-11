@@ -1290,4 +1290,5 @@ const PlayerListData = [
         ]
     }
 ]
+
 export default PlayerListData
