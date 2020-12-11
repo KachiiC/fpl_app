@@ -9,7 +9,7 @@ const Dropdown = (props) => {
 
     const displayedMenus = Menus.map((menu, index) => (
         <DropdownItem className="nav-dropdown-menu-link" key={index}>
-            <Link to={`/${menu}`} className="nav-dropdown-menu-link">
+            <Link to={`/player/${menu}`} className="nav-dropdown-menu-link">
                 {menu}
             </Link>
         </DropdownItem>

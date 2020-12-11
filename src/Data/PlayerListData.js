@@ -2,9 +2,9 @@ const PlayerListData = [
     {
         "player_name": "Anthony",
         "player_id": 2341747,
-        "points_total": 645,
+        "points_total": 657,
         "transfers_total": 15,
-        "current_gameweek": 11,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 2341747,
@@ -109,11 +109,21 @@ const PlayerListData = [
             {
                 "player_id": 2341747,
                 "gameweek": 11,
-                "game_week_points": 76,
-                "points_total": 645,
+                "game_week_points": 88,
+                "points_total": 657,
                 "team_value": 1016,
                 "game_week_transfers": 2,
                 "game_week_transfers_cost": 4,
+                "bench_points": 0
+            },
+            {
+                "player_id": 2341747,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 657,
+                "team_value": 1019,
+                "game_week_transfers": 0,
+                "game_week_transfers_cost": 0,
                 "bench_points": 0
             }
         ]
@@ -121,9 +131,9 @@ const PlayerListData = [
     {
         "player_name": "Dan",
         "player_id": 158159,
-        "points_total": 662,
-        "transfers_total": 14,
-        "current_gameweek": 11,
+        "points_total": 670,
+        "transfers_total": 15,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 158159,
@@ -228,21 +238,31 @@ const PlayerListData = [
             {
                 "player_id": 158159,
                 "gameweek": 11,
-                "game_week_points": 60,
-                "points_total": 662,
+                "game_week_points": 68,
+                "points_total": 670,
                 "team_value": 1024,
                 "game_week_transfers": 2,
                 "game_week_transfers_cost": 0,
-                "bench_points": 6
+                "bench_points": 0
+            },
+            {
+                "player_id": 158159,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 670,
+                "team_value": 1027,
+                "game_week_transfers": 1,
+                "game_week_transfers_cost": 0,
+                "bench_points": 0
             }
         ]
     },
     {
         "player_name": "Elijha",
         "player_id": 213553,
-        "points_total": 616,
-        "transfers_total": 13,
-        "current_gameweek": 11,
+        "points_total": 622,
+        "transfers_total": 14,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 213553,
@@ -347,8 +367,18 @@ const PlayerListData = [
             {
                 "player_id": 213553,
                 "gameweek": 11,
-                "game_week_points": 53,
-                "points_total": 616,
+                "game_week_points": 59,
+                "points_total": 622,
+                "team_value": 1025,
+                "game_week_transfers": 1,
+                "game_week_transfers_cost": 0,
+                "bench_points": 0
+            },
+            {
+                "player_id": 213553,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 622,
                 "team_value": 1025,
                 "game_week_transfers": 1,
                 "game_week_transfers_cost": 0,
@@ -359,9 +389,9 @@ const PlayerListData = [
     {
         "player_name": "Farhan",
         "player_id": 34170,
-        "points_total": 667,
-        "transfers_total": 9,
-        "current_gameweek": 11,
+        "points_total": 672,
+        "transfers_total": 10,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 34170,
@@ -466,21 +496,31 @@ const PlayerListData = [
             {
                 "player_id": 34170,
                 "gameweek": 11,
-                "game_week_points": 75,
-                "points_total": 667,
+                "game_week_points": 80,
+                "points_total": 672,
                 "team_value": 1027,
                 "game_week_transfers": 1,
                 "game_week_transfers_cost": 0,
-                "bench_points": 2
+                "bench_points": 0
+            },
+            {
+                "player_id": 34170,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 672,
+                "team_value": 1029,
+                "game_week_transfers": 1,
+                "game_week_transfers_cost": 0,
+                "bench_points": 0
             }
         ]
     },
     {
         "player_name": "Hayden",
         "player_id": 1639999,
-        "points_total": 542,
-        "transfers_total": 18,
-        "current_gameweek": 11,
+        "points_total": 552,
+        "transfers_total": 20,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 1639999,
@@ -585,12 +625,22 @@ const PlayerListData = [
             {
                 "player_id": 1639999,
                 "gameweek": 11,
-                "game_week_points": 47,
-                "points_total": 542,
+                "game_week_points": 57,
+                "points_total": 552,
                 "team_value": 1016,
                 "game_week_transfers": 2,
                 "game_week_transfers_cost": 4,
                 "bench_points": 1
+            },
+            {
+                "player_id": 1639999,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 552,
+                "team_value": 1017,
+                "game_week_transfers": 2,
+                "game_week_transfers_cost": 4,
+                "bench_points": 0
             }
         ]
     },
@@ -598,8 +648,8 @@ const PlayerListData = [
         "player_name": "Kacheok",
         "player_id": 684633,
         "points_total": 678,
-        "transfers_total": 11,
-        "current_gameweek": 11,
+        "transfers_total": 12,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 684633,
@@ -709,6 +759,16 @@ const PlayerListData = [
                 "team_value": 1025,
                 "game_week_transfers": 1,
                 "game_week_transfers_cost": 0,
+                "bench_points": 1
+            },
+            {
+                "player_id": 684633,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 678,
+                "team_value": 1026,
+                "game_week_transfers": 1,
+                "game_week_transfers_cost": 0,
                 "bench_points": 0
             }
         ]
@@ -716,9 +776,9 @@ const PlayerListData = [
     {
         "player_name": "Michael",
         "player_id": 1867039,
-        "points_total": 558,
-        "transfers_total": 9,
-        "current_gameweek": 11,
+        "points_total": 560,
+        "transfers_total": 11,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 1867039,
@@ -823,11 +883,21 @@ const PlayerListData = [
             {
                 "player_id": 1867039,
                 "gameweek": 11,
-                "game_week_points": 57,
-                "points_total": 558,
+                "game_week_points": 59,
+                "points_total": 560,
                 "team_value": 1007,
                 "game_week_transfers": 0,
                 "game_week_transfers_cost": 0,
+                "bench_points": 2
+            },
+            {
+                "player_id": 1867039,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 560,
+                "team_value": 1005,
+                "game_week_transfers": 2,
+                "game_week_transfers_cost": 4,
                 "bench_points": 0
             }
         ]
@@ -835,9 +905,9 @@ const PlayerListData = [
     {
         "player_name": "Ricky",
         "player_id": 979495,
-        "points_total": 603,
-        "transfers_total": 11,
-        "current_gameweek": 11,
+        "points_total": 610,
+        "transfers_total": 12,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 979495,
@@ -942,21 +1012,31 @@ const PlayerListData = [
             {
                 "player_id": 979495,
                 "gameweek": 11,
-                "game_week_points": 46,
-                "points_total": 603,
+                "game_week_points": 53,
+                "points_total": 610,
                 "team_value": 1003,
                 "game_week_transfers": 0,
                 "game_week_transfers_cost": 0,
-                "bench_points": 4
+                "bench_points": 2
+            },
+            {
+                "player_id": 979495,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 610,
+                "team_value": 1006,
+                "game_week_transfers": 1,
+                "game_week_transfers_cost": 0,
+                "bench_points": 0
             }
         ]
     },
     {
         "player_name": "Shirley",
         "player_id": 4316712,
-        "points_total": 628,
+        "points_total": 630,
         "transfers_total": 9,
-        "current_gameweek": 11,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 4316712,
@@ -1061,21 +1141,31 @@ const PlayerListData = [
             {
                 "player_id": 4316712,
                 "gameweek": 11,
-                "game_week_points": 70,
-                "points_total": 628,
+                "game_week_points": 72,
+                "points_total": 630,
                 "team_value": 1007,
                 "game_week_transfers": 0,
                 "game_week_transfers_cost": 0,
-                "bench_points": 1
+                "bench_points": 2
+            },
+            {
+                "player_id": 4316712,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 630,
+                "team_value": 1009,
+                "game_week_transfers": 0,
+                "game_week_transfers_cost": 0,
+                "bench_points": 0
             }
         ]
     },
     {
         "player_name": "Zeen",
         "player_id": 1029246,
-        "points_total": 571,
-        "transfers_total": 8,
-        "current_gameweek": 11,
+        "points_total": 578,
+        "transfers_total": 9,
+        "current_gameweek": 12,
         "matches": [
             {
                 "player_id": 1029246,
@@ -1180,15 +1270,24 @@ const PlayerListData = [
             {
                 "player_id": 1029246,
                 "gameweek": 11,
-                "game_week_points": 48,
-                "points_total": 571,
+                "game_week_points": 55,
+                "points_total": 578,
                 "team_value": 1017,
                 "game_week_transfers": 2,
+                "game_week_transfers_cost": 0,
+                "bench_points": 0
+            },
+            {
+                "player_id": 1029246,
+                "gameweek": 12,
+                "game_week_points": 0,
+                "points_total": 578,
+                "team_value": 1019,
+                "game_week_transfers": 1,
                 "game_week_transfers_cost": 0,
                 "bench_points": 0
             }
         ]
     }
 ]
-
 export default PlayerListData

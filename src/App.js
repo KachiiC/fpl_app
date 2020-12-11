@@ -2,6 +2,7 @@ import React from 'react'
 // CSS
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'antd/dist/antd.css';
 import './table.css'
 // Components
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -17,14 +18,14 @@ const App = () => {
   const displayPages = PageData.map((page, index) => {
     const pageLink = page.title.split(" ").join("-")
     return (
-      <Route path={`/${pageLink}`} key={index}>
+      <Route path={`/fpl/${pageLink}`} key={index}>
         {page.content}
       </Route>
     )
   })
 
   const displayPlayerPages = PlayerPageData.map((page, index) => (
-      <Route path={`/${page.name}`} key={index}>
+      <Route path={`/player/${page.name}`} key={index}>
         {page.content}
       </Route>
   ))

@@ -21,26 +21,26 @@ const PointsScoredTable = () => {
         allOfTheAverages.push(
             allOfThePointsScored.slice(i, i + numberOfPlayers)
             .reduce((a, b) => a + b) /numberOfPlayers
-            )
-        }
+        )
+    }
         
-        const totalAverage = Math.floor(
-            PlayerListData.map((player) => player.points_total).reduce((a,b) => a+b)/ numberOfPlayers
-        )
+    const totalAverage = Math.floor(
+        PlayerListData.map((player) => player.points_total).reduce((a,b) => a+b)/ numberOfPlayers
+    )
+        
+    const playerGameWeeks = sortedByPoints.map((player, index) => {
+        
+        const playersWeek = player.matches.map((matchweek, index) => {
             
-        const playerGameWeeks = sortedByPoints.map((player, index) => {
+            const renderLogic = matchweek.game_week_points > allOfTheAverages[player.matches.indexOf(matchweek)] ?
+            "good": "bad"
             
-            const playersWeek = player.matches.map((matchweek, index) => {
-                
-                const renderLogic = matchweek.game_week_points > allOfTheAverages[player.matches.indexOf(matchweek)] ?
-                "good": "bad"
-                
-                return (
-                    <td className={`${renderLogic}-week`}>
-                {matchweek.game_week_points}
-            </td>
-        )
-    })
+            return (
+                <td className={`${renderLogic}-week`} key={index}>
+                    {matchweek.game_week_points}
+                </td>
+            )
+        })
         
         const totalPoints = player.points_total
         const averageCompare = totalPoints > totalAverage ? "good" : "bad"
@@ -54,14 +54,14 @@ const PointsScoredTable = () => {
             </tr>
         )
     })
-    
-    const displayAverages = allOfTheAverages.map((average) => <td>{average}</td>)
+
+    const displayAverages = allOfTheAverages.map((average, index) => <td key={index}>{average}</td>)
 
     return (
         <div className="table-container">
             <h2>Current Table</h2>
             <Table responsive>
-                <thead>       
+                <tbody>       
                     <tr>
                         <th>Rank</th>
                         <th>Players</th>
@@ -75,7 +75,7 @@ const PointsScoredTable = () => {
                         {displayAverages}
                         <td>{totalAverage}</td>
                     </tr>
-                </thead>
+                </tbody>
             </Table>
         </div>
     )

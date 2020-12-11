@@ -11,28 +11,28 @@ const PointsByWeekTable = () => {
     const numberOfPlayers = PlayerListData.length;
     const sortedByPoints = PlayerListData.sort((a, b) => b.points_total - a.points_total)
     
-    for (let y = 0; y < numberOfMatchDays; y++) {
-        for (let x = 0; x < PlayerListData.length; x++) {
+    for (let y=0; y < numberOfMatchDays; y++) {
+        for (let x=0; x < PlayerListData.length; x++) {
             allOfThePointsScored.push(PlayerListData[x].matches[y].points_total);
         }
     }
     
-    for (let i = 0; i < allOfThePointsScored.length; i += numberOfPlayers) {
+    for (let i=0; i < allOfThePointsScored.length; i += numberOfPlayers) {
         allOfTheAverages.push(
             allOfThePointsScored.slice(i, i + numberOfPlayers)
             .reduce((a, b) => a + b) /numberOfPlayers
             )
-        }
+    }
         
-        const playerGameWeeks = sortedByPoints.map((player, index) => {
+    const playerGameWeeks = sortedByPoints.map((player, index) => {
+        
+        const playersWeek = player.matches.map((matchweek, index) => {
             
-            const playersWeek = player.matches.map((matchweek, index) => {
-                
-                const renderLogic = matchweek.points_total > allOfTheAverages[player.matches.indexOf(matchweek)] ?
-                "good" : "bad"
-                
-                return (
-                    <td className={`${renderLogic}-week`} key={index}>
+            const renderLogic = matchweek.points_total > allOfTheAverages[player.matches.indexOf(matchweek)] ?
+            "good" : "bad"
+            
+            return (
+                <td className={`${renderLogic}-week`} key={index}>
                     {matchweek.points_total}
                 </td>
             )

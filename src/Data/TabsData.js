@@ -5,7 +5,7 @@ import WeekByWeekTable from 'Tables/WeekByWeekTable'
 import PointsOnBenchTable from 'Tables/PointsOnBenchTable'
 import TeamValueTable from 'Tables/TeamValueTable'
 import GameWeekTransfersTable from '../Tables/GameWeekTransfers'
-import PlayerDetail from 'PlayerDetail'
+import PlayerDetailTest from 'PlayerDetail/PlayerDetailTest'
 
 const TabsData = [
     {
@@ -29,8 +29,8 @@ const TabsData = [
         content: <GameWeekTransfersTable />
     },
     {
-        title: "Player Detail",
-        content: <PlayerDetail />
+        title: "test",
+        content: <PlayerDetailTest />
     }
 
 ]
