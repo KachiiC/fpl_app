@@ -1,16 +1,21 @@
 import React,{useState, useEffect} from 'react'
-import PlayerListDataExample from '../Data/PlayerListData'
+// Data
+import PlayerListDataExample from 'Data/PlayerListData'
+// Components
 import Table from 'react-bootstrap/Table'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const PointsOnBenchTable = () => {
 
     const [playerListData, setplayerListData] = useState(PlayerListDataExample)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
         .then(response => response.json())
         .then(playerDataFromServer => {
             setplayerListData(playerDataFromServer)
+            setIsLoading(false)
         })
         .catch(err => console.log(err))
     }, [])
@@ -37,7 +42,7 @@ const PointsOnBenchTable = () => {
     }
 
     const displayAverages = allOfTheAverages.map((average) => <td>{average}</td>)
-
+    const totalAverage = allOfTheAverages.reduce((a,b) => a+b)
 
     const sortedByBenchPointsLost = playerListData.sort((a, b) => {
         return b.matches.map((week) => week.bench_points).reduce((a,b) => a+b) - a.matches.map((week) => week.bench_points).reduce((a,b) => a+b)
@@ -45,15 +50,15 @@ const PointsOnBenchTable = () => {
 
     const playerGameWeeks = sortedByBenchPointsLost.map((player) => {
         
-        
         const playersWeek = player.matches.map((matchweek) => {
 
             const renderLogic = matchweek.bench_points > allOfTheAverages[player.matches.indexOf(matchweek)] ?
-            <td className="bad-week">{Math.floor(matchweek.bench_points)}</td>:
-            <td className="good-week">{Math.floor(matchweek.bench_points)}</td> 
+            "bad":"good"
 
             return (
-                <>{renderLogic}</>
+                <td className={`${renderLogic}-week`}>
+                    {Math.floor(matchweek.bench_points)}
+                </td>
             )
         })
 
@@ -69,26 +74,31 @@ const PointsOnBenchTable = () => {
         )
     })
 
+    const renderTable = isLoading ? <CircularProgress /> : (
+        <Table responsive>
+            <tbody>
+                <tr>
+                    <th>Rank</th>
+                    <th>Players</th>
+                    {GameWeeks}
+                    <th>Total</th>
+                </tr>
+                {playerGameWeeks}
+                <tr>
+                    <td>-</td>
+                    <td>Average</td>
+                    {displayAverages}
+                    <td>{totalAverage}</td>
+                </tr>
+            </tbody>
+        </Table>
+
+    )
+
     return (
         <div className="table-container">
-            <h1>Points Lost on bench</h1>
-            <Table responsive>
-                <tbody>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Players</th>
-                        {GameWeeks}
-                        <th>Total</th>
-                    </tr>
-                    {playerGameWeeks}
-                    <tr>
-                        <td>-</td>
-                        <td>Average</td>
-                        {displayAverages}
-                        <td></td>
-                    </tr>
-                </tbody>
-            </Table>
+            <h2>Points Lost on bench</h2>
+            {renderTable}
         </div>
     )
 

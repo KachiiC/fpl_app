@@ -1,16 +1,21 @@
 import React,{useState, useEffect} from 'react'
-import PlayerListDataExample from '../Data/PlayerListData'
+// Data
+import PlayerListDataExample from 'Data/PlayerListData'
+// Components
 import Table from 'react-bootstrap/Table'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
-const GameWeekTransfersTable = () => {
+const PointsOnTransfers = () => {
 
     const [playerListData, setplayerListData] = useState(PlayerListDataExample)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
         .then(response => response.json())
         .then(playerDataFromServer => {
             setplayerListData(playerDataFromServer)
+            setIsLoading(false)
         })
         .catch(err => console.log(err))
     }, [])
@@ -24,8 +29,13 @@ const GameWeekTransfersTable = () => {
     const playerGameWeeks = sortTeamsByTransferPoints.map((player) => {
 
         const playersWeek = player.matches.map((matchweek) => {
+
+            const renderLogic = ( matchweek.game_week_transfers_cost > 0 ? 
+                    (matchweek.game_week_transfers_cost === 4 ? "yellow": "red"): "none" 
+                )
+
             return (
-                <td>{matchweek.game_week_transfers_cost}</td>
+                <td className={`transfer-${renderLogic}`}>{matchweek.game_week_transfers_cost}</td>
             )
         })
 
@@ -41,23 +51,27 @@ const GameWeekTransfersTable = () => {
         )
     })
 
+    const renderTable = isLoading ? <CircularProgress /> : (
+        <Table responsive>
+            <tbody>
+                <tr>
+                    <th>Rank</th>
+                    <th>Players</th>
+                    {GameWeeks}
+                    <th>Total</th>
+                </tr>
+                {playerGameWeeks}
+            </tbody>
+        </Table>
+    )
+
     return (
         <div className="table-container">
-            <h1>Points Spent on Transfers</h1>
-            <Table responsive>
-                <tbody>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Players</th>
-                        {GameWeeks}
-                        <th>Total</th>
-                    </tr>
-                    {playerGameWeeks}
-                </tbody>
-            </Table>
+            <h2>Points Spent on Transfers</h2>
+            {renderTable}
         </div>
     )
 
 }
 
-export default GameWeekTransfersTable
+export default PointsOnTransfers

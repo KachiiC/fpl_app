@@ -35,3 +35,12 @@ th:nth-child(2) {
     background-color: inherit;
     border: inherit;
 }
+
+.transfer-yellow {
+    background-color: khaki;
+}
+
+.transfer-red {
+    background-color: rgb(103, 0, 0);
+    color:rgb(238, 238, 238)
+}

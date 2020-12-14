@@ -7,10 +7,10 @@ import './table.css'
 // Components
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SiteNavbar from './Components/SiteNavbar'
-import PointsScoredTable from './Tables/PointsScoredTable';
+import InputTable from './Tables/InputTable';
+// Data
 import PageData from 'Data/PageData';
 import PlayerPageData from 'Data/PlayerPageData'
-// Data
 
 
 const App = () => {
@@ -30,8 +30,6 @@ const App = () => {
       </Route>
   ))
 
-  console.log(PlayerPageData)
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -40,8 +38,8 @@ const App = () => {
           <Switch>
             {displayPages}
             {displayPlayerPages}
-            <Route path="/">
-              <PointsScoredTable />
+            <Route path="/fpl_app">
+              <InputTable />
             </Route>
           </Switch>
         </main>

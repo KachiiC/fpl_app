@@ -1,19 +1,24 @@
 import React,{useState, useEffect} from 'react'
-import PlayerListDataExample from '../Data/PlayerListData'
+// Data
+import PlayerListDataExample from 'Data/PlayerListData'
+// Components
 import Table from 'react-bootstrap/Table'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const TeamValueTable = () => {
 
     const [playerListData, setplayerListData] = useState(PlayerListDataExample)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
         .then(response => response.json())
         .then(playerDataFromServer => {
             setplayerListData(playerDataFromServer)
+            setIsLoading(false)
         })
         .catch(err => console.log(err))
-    },[])
+    }, [])
 
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
@@ -66,24 +71,28 @@ const TeamValueTable = () => {
         )
     })
 
+    const renderTable = isLoading ? <CircularProgress /> : (
+        <Table responsive>
+            <tbody>
+                <tr>
+                    <th>Rank</th>
+                    <th>Players</th>
+                    {GameWeeks}
+                </tr>
+                {playerGameWeeks}
+                <tr>
+                    <td>-</td>
+                    <td>Average</td>
+                    {displayAverages}
+                </tr>
+            </tbody>
+        </Table>
+    )
+
     return (
         <div className="table-container">
             <h2>Team Value</h2>
-            <Table responsive>
-                <tbody>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Players</th>
-                        {GameWeeks}
-                    </tr>
-                    {playerGameWeeks}
-                    <tr>
-                        <td>-</td>
-                        <td>Average</td>
-                        {displayAverages}
-                    </tr>
-                </tbody>
-            </Table>
+            {renderTable}
         </div>
     )
 

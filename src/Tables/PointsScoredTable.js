@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import PlayerListDataExample from '../Data/PlayerListData'
+import PlayerListDataExample from 'Data/PlayerListData'
 import Table from 'react-bootstrap/Table'
 
 const PointsScoredTable = () => {
