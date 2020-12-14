@@ -1,18 +1,29 @@
-import React from 'react'
-import PlayerListData from 'Data/PlayerListData'
+import React,{useState, useEffect} from 'react'
+import PlayerListDataExample from '../Data/PlayerListData'
 import Table from 'react-bootstrap/Table'
 
 const TeamValueTable = () => {
 
+    const [playerListData, setplayerListData] = useState(PlayerListDataExample)
+
+    useEffect(() => {
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        .then(response => response.json())
+        .then(playerDataFromServer => {
+            setplayerListData(playerDataFromServer)
+        })
+        .catch(err => console.log(err))
+    },[])
+
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
-    const numberOfMatchDays = PlayerListData[0].matches.length;
-    const numberOfPlayers = PlayerListData.length;
+    const numberOfMatchDays = playerListData[0].matches.length;
+    const numberOfPlayers = playerListData.length;
     
     for (let y = 0; y < numberOfMatchDays; y++) {
-        for (let x = 0; x < PlayerListData.length; x++) {
+        for (let x = 0; x < playerListData.length; x++) {
             allOfThePointsScored.push(
-                Math.floor(PlayerListData[x].matches[y].team_value)
+                Math.floor(playerListData[x].matches[y].team_value)
             );
         }
     }
@@ -26,10 +37,10 @@ const TeamValueTable = () => {
 
     const displayAverages = allOfTheAverages.map((average) => <td>{Math.floor(average)/10}M</td>)
     
-    const GameWeeks = PlayerListData[0].matches.map((match) => 
+    const GameWeeks = playerListData[0].matches.map((match) => 
     <th>GW{match.gameweek}</th>)
 
-    const sortedByTeamValue = PlayerListData.sort((a, b) => b.matches[b.matches.length - 1].team_value - a.matches[a.matches.length - 1].team_value)
+    const sortedByTeamValue = playerListData.sort((a, b) => b.matches[b.matches.length - 1].team_value - a.matches[a.matches.length - 1].team_value)
 
     const playerGameWeeks = sortedByTeamValue.map((player) => {
 
@@ -48,7 +59,7 @@ const TeamValueTable = () => {
 
         return (
             <tr>
-                <td>{PlayerListData.indexOf(player) + 1}</td>
+                <td>{playerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
             </tr>

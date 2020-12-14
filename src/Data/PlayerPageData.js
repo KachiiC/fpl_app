@@ -4,12 +4,13 @@ import PlayerDetailTable from 'PlayerDetail/PlayerDetailTable'
 // Data
 import PlayerListData from 'Data/PlayerListData'
 
+
 const PlayerPageData = PlayerListData.map((player) => {
-    return {
-        name: player.player_name,
-        content: <PlayerDetailTable data={player}/>
-    }
-})
+        return {
+            name: player.player_name,
+            content: <PlayerDetailTable data={player}/>
+        }
+    })
 
 
 

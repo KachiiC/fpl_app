@@ -1,21 +1,30 @@
-import React from 'react'
-import PlayerListData from '../Data/PlayerListData'
+import React,{useState, useEffect} from 'react'
+import PlayerListDataExample from '../Data/PlayerListData'
 import Table from 'react-bootstrap/Table'
 
 const PointsOnBenchTable = () => {
+
+    const [playerListData, setplayerListData] = useState(PlayerListDataExample)
+
+    useEffect(() => {
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        .then(response => response.json())
+        .then(playerDataFromServer => {
+            setplayerListData(playerDataFromServer)
+        })
+        .catch(err => console.log(err))
+    }, [])
     
-    const GameWeeks = PlayerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
-
-
+    const GameWeeks = playerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
-    const numberOfMatchDays = PlayerListData[0].matches.length;
-    const numberOfPlayers = PlayerListData.length;
+    const numberOfMatchDays = playerListData[0].matches.length;
+    const numberOfPlayers = playerListData.length;
     
     for (let y = 0; y < numberOfMatchDays; y++) {
-        for (let x = 0; x < PlayerListData.length; x++) {
+        for (let x = 0; x < playerListData.length; x++) {
             allOfThePointsScored.push(
-                Math.floor(PlayerListData[x].matches[y].bench_points)
+                Math.floor(playerListData[x].matches[y].bench_points)
             );
         }
     }
@@ -30,7 +39,7 @@ const PointsOnBenchTable = () => {
     const displayAverages = allOfTheAverages.map((average) => <td>{average}</td>)
 
 
-    const sortedByBenchPointsLost = PlayerListData.sort((a, b) => {
+    const sortedByBenchPointsLost = playerListData.sort((a, b) => {
         return b.matches.map((week) => week.bench_points).reduce((a,b) => a+b) - a.matches.map((week) => week.bench_points).reduce((a,b) => a+b)
     })
 
@@ -52,7 +61,7 @@ const PointsOnBenchTable = () => {
 
         return (
             <tr>
-                <td>{PlayerListData.indexOf(player) + 1}</td>
+                <td>{playerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
                 <td>{totalLost}</td>

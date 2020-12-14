@@ -1,12 +1,23 @@
-import React from 'react'
-import PlayerListData from '../Data/PlayerListData'
+import React,{useState, useEffect} from 'react'
+import PlayerListDataExample from '../Data/PlayerListData'
 import Table from 'react-bootstrap/Table'
 
 const GameWeekTransfersTable = () => {
-    
-    const GameWeeks = PlayerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
 
-    const sortTeamsByTransferPoints = PlayerListData.sort((a, b) => {
+    const [playerListData, setplayerListData] = useState(PlayerListDataExample)
+
+    useEffect(() => {
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        .then(response => response.json())
+        .then(playerDataFromServer => {
+            setplayerListData(playerDataFromServer)
+        })
+        .catch(err => console.log(err))
+    }, [])
+    
+    const GameWeeks = playerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
+
+    const sortTeamsByTransferPoints = playerListData.sort((a, b) => {
         return b.matches.map((week) => week.game_week_transfers_cost).reduce((a,b) => a+b) - a.matches.map((week) => week.game_week_transfers_cost).reduce((a,b) => a+b)
     })
 
@@ -22,7 +33,7 @@ const GameWeekTransfersTable = () => {
 
         return (
             <tr>
-                <td>{PlayerListData.indexOf(player) + 1}</td>
+                <td>{playerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
                 <td>{totalLost}</td>

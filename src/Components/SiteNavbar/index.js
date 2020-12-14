@@ -36,7 +36,7 @@ const Example = (props) => {
     
     return (
         <Navbar color="dark" dark expand="md" className="nav-background">
-            <NavbarBrand href="/">Fantasy Premier League Stats</NavbarBrand>
+            <NavbarBrand href="/fpl_app">Fantasy Premier League Stats</NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="mr-auto" navbar>

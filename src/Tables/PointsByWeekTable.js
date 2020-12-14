@@ -1,19 +1,30 @@
-import React from 'react'
-import PlayerListData from '../Data/PlayerListData'
+import React,{useState, useEffect} from 'react'
+import PlayerListDataExample from '../Data/PlayerListData'
 import Table from 'react-bootstrap/Table'
 
 const PointsByWeekTable = () => {
+
+    const [playerListData, setplayerListData] = useState(PlayerListDataExample)
+
+    useEffect(() => {
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        .then(response => response.json())
+        .then(playerDataFromServer => {
+            setplayerListData(playerDataFromServer)
+        })
+        .catch(err => console.log(err))
+    },[])
     
-    const GameWeeks = PlayerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
+    const GameWeeks = playerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
-    const numberOfMatchDays = PlayerListData[0].matches.length;
-    const numberOfPlayers = PlayerListData.length;
-    const sortedByPoints = PlayerListData.sort((a, b) => b.points_total - a.points_total)
+    const numberOfMatchDays = playerListData[0].matches.length;
+    const numberOfPlayers = playerListData.length;
+    const sortedByPoints = playerListData.sort((a, b) => b.points_total - a.points_total)
     
     for (let y=0; y < numberOfMatchDays; y++) {
-        for (let x=0; x < PlayerListData.length; x++) {
-            allOfThePointsScored.push(PlayerListData[x].matches[y].points_total);
+        for (let x=0; x < playerListData.length; x++) {
+            allOfThePointsScored.push(playerListData[x].matches[y].points_total);
         }
     }
     
@@ -40,7 +51,7 @@ const PointsByWeekTable = () => {
         
         return (
             <tr key={index}>
-                <td>{PlayerListData.indexOf(player) + 1}</td>
+                <td>{playerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
             </tr>
