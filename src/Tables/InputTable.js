@@ -12,7 +12,6 @@ const InputTable = (props) => {
 
     const [playerListData, setplayerListData] = useState(PlayerListDataExample)
     const [isLoading, setIsLoading] = useState(true)
-
     useEffect(() => {
         fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
         .then(response => response.json())
@@ -23,9 +22,12 @@ const InputTable = (props) => {
         .catch(err => console.log(err))
     },[])
     
-    const GameWeeks = playerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
-    const numberOfMatchDays = playerListData[0].matches.length;
+    const singlePlayer = playerListData[0]
+    
+    const GameWeeks = singlePlayer.matches.map((match) => <th>GW{match.gameweek}</th>)
+    const numberOfMatchDays = singlePlayer.matches.length;
     const numberOfPlayers = playerListData.length;
+
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
     
