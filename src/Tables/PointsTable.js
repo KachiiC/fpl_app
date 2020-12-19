@@ -5,7 +5,7 @@ import PlayerListDataExample from 'Data/PlayerListData'
 import Table from 'react-bootstrap/Table'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-const InputTable = (props) => {
+const PointsTable = (props) => {
 
     const dataType = props.data
     const tableTitle = props.title
@@ -106,4 +106,4 @@ const InputTable = (props) => {
 
 }
 
-export default InputTable
+export default PointsTable

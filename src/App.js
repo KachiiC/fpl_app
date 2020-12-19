@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 // Components
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SiteNavbar from './Components/SiteNavbar'
-import InputTable from './Tables/InputTable';
+import PointsTable from './Tables/PointsTable';
 // Data
 import PageData from 'Data/PageData';
 import PlayerPageData from 'Data/PlayerPageData'
@@ -18,7 +18,7 @@ const App = () => {
   const displayPages = PageData.map((page, index) => {
     const pageLink = page.title.split(" ").join("-")
     return (
-      <Route path={`/fpl/${pageLink}`} key={index}>
+      <Route path={`/fpl_app/${pageLink}`} key={index}>
         {page.content}
       </Route>
     )
@@ -39,7 +39,7 @@ const App = () => {
             {displayPages}
             {displayPlayerPages}
             <Route path="/fpl_app">
-              <InputTable />
+              <PointsTable title="Weekly Points"/>
             </Route>
           </Switch>
         </main>

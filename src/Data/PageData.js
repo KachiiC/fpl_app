@@ -4,13 +4,13 @@ import React from 'react'
 import TeamValueTable from 'Tables/TeamValueTable'
 import PointsOnBenchTable from 'Tables/PointsOnBenchTable'
 import PointsOnTransfers from 'Tables/PointsOnTransfers'
-import InputTable from 'Tables/InputTable'
+import PointsTable from 'Tables/PointsTable'
 
 
 const PageData = [
     {
-        title: "week by week",
-        content: <InputTable data="points_total"/>
+        title: "Weekly Totals",
+        content: <PointsTable data="points_total" title="Weekly Totals"/>
     },
     {
         title: "team value",

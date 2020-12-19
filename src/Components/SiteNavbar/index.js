@@ -21,7 +21,7 @@ const Example = (props) => {
 
         return (
             <NavItem key={index}>
-                <Link to={`/fpl/${pageLink}`} className="nav-links">
+                <Link to={`/fpl_app/${pageLink}`} className="nav-links">
                     {page.title}
                 </Link>
             </NavItem>

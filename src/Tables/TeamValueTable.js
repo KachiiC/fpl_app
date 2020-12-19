@@ -45,20 +45,21 @@ const TeamValueTable = () => {
     const GameWeeks = playerListData[0].matches.map((match) => 
     <th>GW{match.gameweek}</th>)
 
-    const sortedByTeamValue = playerListData.sort((a, b) => b.matches[b.matches.length - 1].team_value - a.matches[a.matches.length - 1].team_value)
+    const sortedByTeamValue = playerListData.sort((a, b) => {
+        return b.matches[b.matches.length - 1].team_value - a.matches[a.matches.length - 1].team_value
+    })
 
     const playerGameWeeks = sortedByTeamValue.map((player) => {
 
         const playersWeek = player.matches.map((matchweek) => {
 
             const renderLogic = matchweek.team_value > allOfTheAverages[player.matches.indexOf(matchweek)] ?
-            <td className="good-week">{Math.floor(matchweek.team_value)/10}</td> : 
-            <td className="bad-week">{Math.floor(matchweek.team_value)/10}</td>
+            "good" : "bad"
 
             return (
-                <>
-                    {renderLogic}
-                </>
+                <td className={`${renderLogic}-week`}>
+                    {Math.floor(matchweek.team_value)/10}
+                </td>
             )
         })
 
