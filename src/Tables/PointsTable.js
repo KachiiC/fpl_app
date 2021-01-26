@@ -13,7 +13,7 @@ const PointsTable = (props) => {
     const [playerListData, setplayerListData] = useState(PlayerListDataExample)
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
-        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players_refresh")
         .then(response => response.json())
         .then(playerDataFromServer => {
             setplayerListData(playerDataFromServer)
@@ -24,9 +24,15 @@ const PointsTable = (props) => {
     
     const singlePlayer = playerListData[0]
     
-    const GameWeeks = singlePlayer.matches.map((match) => <th>GW{match.gameweek}</th>)
+    const GameWeeks = singlePlayer.matches.map(
+        (match) => <th>GW{match.gameweek}</th>
+    )
+
     const numberOfMatchDays = singlePlayer.matches.length;
     const numberOfPlayers = playerListData.length;
+    const averageOfAllTotals = playerListData.map(
+        (player) => player.points_total).reduce((a, b) => a + b) / numberOfPlayers
+    console.log(averageOfAllTotals)
 
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
@@ -46,14 +52,18 @@ const PointsTable = (props) => {
             allOfThePointsScored.slice(i, i + numberOfPlayers)
             .reduce((a, b) => a + b) /numberOfPlayers
         )
-    }
+    } 
         
     const playerGameWeeks = playerListData.map((player, index) => {
         
         const playersWeek = player.matches.map((matchweek, index) => {
             
-            const renderType = dataType === "points_total" ? matchweek.points_total : matchweek.game_week_points
-            const renderLogic = renderType > allOfTheAverages[player.matches.indexOf(matchweek)] ? "good" : "bad"
+            const renderType = dataType === "points_total" ? 
+                matchweek.points_total : 
+                matchweek.game_week_points
+            const renderLogic = renderType > allOfTheAverages[player.matches.indexOf(matchweek)] ? 
+            "good" : 
+            "bad"
             
             return (
                 <td className={`${renderLogic}-week`} key={index}>
@@ -64,19 +74,27 @@ const PointsTable = (props) => {
                 </td>
             )
         })
+
+        const renderTotalLogic = player.points_total > averageOfAllTotals ? "good": "bad"
         
         return (
             <tr key={index}>
                 <td>{playerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
+                { dataType === "points_total" ?
+                    <></>:
+                    <td className={`${renderTotalLogic}-week`}>
+                        {player.points_total}
+                    </td>
+                }
             </tr>
         )
     })
     
-    const displayAverages = allOfTheAverages.map((average, index) => {
-        return <td key={index}>{average}</td>
-    })
+    const displayAverages = allOfTheAverages.map(
+        (average, index) => <td key={index}>{average}</td>
+    )
 
     const renderTable = isLoading ? <CircularProgress /> : (
         <Table responsive>
@@ -85,12 +103,20 @@ const PointsTable = (props) => {
                     <th>Rank</th>
                     <th>Players</th>
                     {GameWeeks}
+                    { dataType === "points_total" ?
+                        <></>:
+                        <th>Total</th>
+                    }
                 </tr>
                 {playerGameWeeks}
                 <tr>
                     <td>-</td>
                     <td>Average</td>
                     {displayAverages}
+                    { dataType === "points_total" ?
+                        <></>:
+                        <td>{averageOfAllTotals}</td>
+                    }
                 </tr>
             </tbody>
         </Table>

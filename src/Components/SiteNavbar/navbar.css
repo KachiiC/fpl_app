@@ -1,23 +1,21 @@
-.nav-links {
+.nav-links,
+.nav-background, 
+.nav-dropdown,
+.nav-dropdown-menu,
+.nav-dropdown-menu-link {
     background-color: rgb(29, 29, 29) !important;
-    cursor: pointer;
-    font-weight: 600;
     color: white !important;
-    font-size: 18px;
+}
+
+.nav-links,
+.nav-dropdown-menu-link {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.nav-links {
+    cursor: pointer;
     text-transform: capitalize;
     margin: 10px;
 }
 
-.nav-background, 
-.nav-dropdown,
-.nav-dropdown-menu {
-    background-color: rgb(29, 29, 29) !important;
-    color: white !important;
-}
-
-.nav-dropdown-menu-link {
-    background-color: rgb(29, 29, 29) !important;
-    font-size: 20px;
-    color: white !important;
-    font-weight: 600;
-}
