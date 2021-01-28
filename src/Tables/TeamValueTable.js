@@ -11,7 +11,7 @@ const TeamValueTable = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players_refresh")
         .then(response => response.json())
         .then(playerDataFromServer => {
             setplayerListData(playerDataFromServer)

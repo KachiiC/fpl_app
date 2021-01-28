@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react'
 // Data
 import PlayerListDataExample from 'Data/PlayerListData'
+// CSS
+import CircularProgress from '@material-ui/core/CircularProgress'
 // Components
 import Table from 'react-bootstrap/Table'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 const PointsOnTransfers = () => {
 
@@ -22,9 +23,10 @@ const PointsOnTransfers = () => {
     
     const GameWeeks = playerListData[0].matches.map((match) => <th>GW{match.gameweek}</th>)
 
-    const sortTeamsByTransferPoints = playerListData.sort((a, b) => {
-        return b.matches.map((week) => week.game_week_transfers_cost).reduce((a,b) => a+b) - a.matches.map((week) => week.game_week_transfers_cost).reduce((a,b) => a+b)
-    })
+    const sortTeamsByTransferPoints = playerListData.sort((a, b) => 
+        b.matches.map((week) => week.game_week_transfers_cost).reduce(
+        (a,b) => a + b) - a.matches.map((week) => week.game_week_transfers_cost).reduce((a,b) => a + b)
+    )
 
     const playerGameWeeks = sortTeamsByTransferPoints.map((player) => {
 
@@ -35,7 +37,9 @@ const PointsOnTransfers = () => {
                 )
 
             return (
-                <td className={`transfer-${renderLogic}`}>{matchweek.game_week_transfers_cost}</td>
+                <td className={`transfer-${renderLogic}`}>
+                    {matchweek.game_week_transfers_cost}
+                </td>
             )
         })
 
