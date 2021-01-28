@@ -32,7 +32,6 @@ const PointsTable = (props) => {
     const numberOfPlayers = playerListData.length;
     const averageOfAllTotals = playerListData.map(
         (player) => player.points_total).reduce((a, b) => a + b) / numberOfPlayers
-    console.log(averageOfAllTotals)
 
     const allOfThePointsScored = [];
     const allOfTheAverages = [];
@@ -61,7 +60,8 @@ const PointsTable = (props) => {
             const renderType = dataType === "points_total" ? 
                 matchweek.points_total : 
                 matchweek.game_week_points
-            const renderLogic = renderType > allOfTheAverages[player.matches.indexOf(matchweek)] ? 
+                
+            const renderLogic = renderType >= allOfTheAverages[player.matches.indexOf(matchweek)] ? 
             "good" : 
             "bad"
             
@@ -93,7 +93,7 @@ const PointsTable = (props) => {
     })
     
     const displayAverages = allOfTheAverages.map(
-        (average, index) => <td key={index}>{average}</td>
+        (average, index) => <td key={index}>{Math.floor(average, 2)}</td>
     )
 
     const renderTable = isLoading ? <CircularProgress /> : (
@@ -115,7 +115,7 @@ const PointsTable = (props) => {
                     {displayAverages}
                     { dataType === "points_total" ?
                         <></>:
-                        <td>{averageOfAllTotals}</td>
+                        <td>{Math.floor(averageOfAllTotals)}</td>
                     }
                 </tr>
             </tbody>

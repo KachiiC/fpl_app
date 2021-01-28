@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState , useEffect } from 'react'
 // Data
 import PlayerListDataExample from 'Data/PlayerListData'
 // CSS
@@ -12,7 +12,7 @@ const PointsOnTransfers = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players_refresh")
         .then(response => response.json())
         .then(playerDataFromServer => {
             setplayerListData(playerDataFromServer)

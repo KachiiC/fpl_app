@@ -11,7 +11,7 @@ const PointsOnBenchTable = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players_refresh")
         .then(response => response.json())
         .then(playerDataFromServer => {
             setplayerListData(playerDataFromServer)
@@ -41,7 +41,7 @@ const PointsOnBenchTable = () => {
         )
     }
 
-    const displayAverages = allOfTheAverages.map((average) => <td>{average}</td>)
+    const displayAverages = allOfTheAverages.map((average) => <td>{Math.floor(average)}</td>)
     const totalAverage = allOfTheAverages.reduce((a,b) => a+b)
 
     const sortedByBenchPointsLost = playerListData.sort((a, b) => {
@@ -57,7 +57,7 @@ const PointsOnBenchTable = () => {
 
             return (
                 <td className={`${renderLogic}-week`}>
-                    {Math.floor(matchweek.bench_points)}
+                    {matchweek.bench_points}
                 </td>
             )
         })
@@ -69,7 +69,7 @@ const PointsOnBenchTable = () => {
                 <td>{playerListData.indexOf(player) + 1}</td>
                 <td>{player.player_name}</td>
                 {playersWeek}
-                <td>{totalLost}</td>
+                <td>{Math.floor(totalLost)}</td>
             </tr>
         )
     })
@@ -88,7 +88,7 @@ const PointsOnBenchTable = () => {
                     <td>-</td>
                     <td>Average</td>
                     {displayAverages}
-                    <td>{totalAverage}</td>
+                    <td>{Math.floor(totalAverage)}</td>
                 </tr>
             </tbody>
         </Table>
