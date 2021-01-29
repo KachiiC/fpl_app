@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
     Collapse, 
     Navbar, 
@@ -13,7 +13,9 @@ import './navbar.css'
 import {Link} from 'react-router-dom'
 import PlayerListData from 'Data/PlayerListData';
 
-const Example = (props) => {
+const SiteNavbar = (props) => {
+
+    const [playerListData, setplayerListData] = useState(PlayerListData)
 
     const displayNavs = PageData.map((page, index) => {
 
@@ -27,8 +29,17 @@ const Example = (props) => {
             </NavItem>
         )
     })
+
+    useEffect(() => {
+        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players_refresh")
+        .then(response => response.json())
+        .then(playerDataFromServer => {
+            setplayerListData(playerDataFromServer)
+        })
+        .catch(err => console.log(err))
+    }, [])
     
-    const playersList = PlayerListData.map((player) => player.player_name)
+    const playersList = playerListData.map((player) => player.player_name)
     
     const [isOpen, setIsOpen] = useState(false);
 
@@ -48,4 +59,4 @@ const Example = (props) => {
     );
 }
 
-export default Example;
+export default SiteNavbar;

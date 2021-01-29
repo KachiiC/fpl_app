@@ -19,3 +19,8 @@
     margin: 10px;
 }
 
+@media only screen and (max-width: 768px) {
+    .nav-dropdown-menu-link {
+        width: 100%;
+    }
+}

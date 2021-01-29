@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // CSS
 import './App.css';
 import './table.css'
@@ -10,10 +10,22 @@ import SiteNavbar from './Components/SiteNavbar'
 import PointsTable from './Tables/PointsTable';
 // Data
 import PageData from 'Data/PageData';
-import PlayerPageData from 'Data/PlayerPageData'
+import PlayerListData from 'Data/PlayerListData'
+import PlayerDetailTable from './PlayerDetail/PlayerDetailTable';
 
 
 const App = () => {
+
+  const [playerListData, setplayerListData] = useState(PlayerListData)
+
+  useEffect(() => {
+    fetch("https://kachiis-rest.herokuapp.com/api/fpl_players/")
+    .then(response => response.json())
+    .then(playerDataFromServer => {
+          setplayerListData(playerDataFromServer)
+        })
+        .catch(err => console.log(err))
+    },[])
   
   const displayPages = PageData.map((page, index) => {
     const pageLink = page.title.split(" ").join("-")
@@ -24,9 +36,9 @@ const App = () => {
     )
   })
 
-  const displayPlayerPages = PlayerPageData.map((page, index) => (
-      <Route path={`/player/${page.name}`} key={index}>
-        {page.content}
+  const displayPlayerPages = playerListData.map((player, index) => (
+      <Route path={`/player/${player.player_name}`} key={index}>
+        <PlayerDetailTable data={player}/>
       </Route>
   ))
 

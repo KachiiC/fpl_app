@@ -12,6 +12,7 @@ const PointsTable = (props) => {
 
     const [playerListData, setplayerListData] = useState(PlayerListDataExample)
     const [isLoading, setIsLoading] = useState(true)
+
     useEffect(() => {
         fetch("https://kachiis-rest.herokuapp.com/api/fpl_players_refresh")
         .then(response => response.json())
@@ -79,8 +80,8 @@ const PointsTable = (props) => {
         
         return (
             <tr key={index}>
-                <td>{playerListData.indexOf(player) + 1}</td>
-                <td>{player.player_name}</td>
+                <td className="player-rank rank-name">{playerListData.indexOf(player) + 1}</td>
+                <td className="player-name rank-name">{player.player_name}</td>
                 {playersWeek}
                 { dataType === "points_total" ?
                     <></>:
@@ -93,39 +94,44 @@ const PointsTable = (props) => {
     })
     
     const displayAverages = allOfTheAverages.map(
-        (average, index) => <td key={index}>{Math.floor(average, 2)}</td>
+        (average, index) => <td key={index}>{average.toFixed(1)}</td>
     )
 
-    const renderTable = isLoading ? <CircularProgress /> : (
-        <Table responsive>
-            <tbody>
-                <tr>
-                    <th>Rank</th>
-                    <th>Players</th>
-                    {GameWeeks}
-                    { dataType === "points_total" ?
-                        <></>:
-                        <th>Total</th>
-                    }
-                </tr>
-                {playerGameWeeks}
-                <tr>
-                    <td>-</td>
-                    <td>Average</td>
-                    {displayAverages}
-                    { dataType === "points_total" ?
-                        <></>:
-                        <td>{Math.floor(averageOfAllTotals)}</td>
-                    }
-                </tr>
-            </tbody>
-        </Table>
+    const renderTable = isLoading ? (
+            <CircularProgress />
+        ) : (
+        <>
+            <h2>{tableTitle}</h2>
+            <Table responsive>
+                <tbody>
+                    <tr>
+                        <th className="player-rank rank-name">Rank</th>
+                        <th className="player-name rank-name">Players</th>
+                        
+                        {GameWeeks}
+                        { dataType === "points_total" ?
+                            <></>:
+                            <th>Total</th>
+                        }
+                    </tr>
+                    {playerGameWeeks}
+                    <tr>
+                        <td className="player-rank rank-name">-</td>
+                        <td className="player-name rank-name">Average</td>
+                        {displayAverages}
+                        { dataType === "points_total" ?
+                            <></>:
+                            <td>{averageOfAllTotals.toFixed(1)}</td>
+                        }
+                    </tr>
+                </tbody>
+            </Table>
+        </>
 
     )
     
     return (
         <div className="table-container">
-            <h2>{tableTitle}</h2>
             {renderTable}
         </div>
     )

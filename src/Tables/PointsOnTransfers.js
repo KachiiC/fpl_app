@@ -47,8 +47,8 @@ const PointsOnTransfers = () => {
 
         return (
             <tr>
-                <td>{playerListData.indexOf(player) + 1}</td>
-                <td>{player.player_name}</td>
+                <td className="player-rank rank-name">{playerListData.indexOf(player) + 1}</td>
+                <td className="player-name rank-name">{player.player_name}</td>
                 {playersWeek}
                 <td>{totalLost}</td>
             </tr>
@@ -59,8 +59,8 @@ const PointsOnTransfers = () => {
         <Table responsive>
             <tbody>
                 <tr>
-                    <th>Rank</th>
-                    <th>Players</th>
+                    <th className="player-rank rank-name">Rank</th>
+                    <th className="player-name rank-name">Players</th>
                     {GameWeeks}
                     <th>Total</th>
                 </tr>

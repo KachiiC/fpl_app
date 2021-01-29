@@ -41,12 +41,24 @@ const PointsOnBenchTable = () => {
         )
     }
 
-    const displayAverages = allOfTheAverages.map((average) => <td>{Math.floor(average)}</td>)
-    const totalAverage = allOfTheAverages.reduce((a,b) => a+b)
+    const displayAverages = allOfTheAverages.map(
+        (average) => 
+            <td>{average.toFixed(1)}</td>
+    )
 
-    const sortedByBenchPointsLost = playerListData.sort((a, b) => {
-        return b.matches.map((week) => week.bench_points).reduce((a,b) => a+b) - a.matches.map((week) => week.bench_points).reduce((a,b) => a+b)
-    })
+    const totalAverage = allOfTheAverages.reduce(
+        (a,b) => a + b
+    )
+
+    const sortedByBenchPointsLost = playerListData.sort(
+        (a, b) => b.matches.map(
+            (week) => week.bench_points).reduce(
+                (a,b) => a + b) - a.matches.map(
+                    (week) => week.bench_points
+                ).reduce(
+                    (a,b) => a + b
+                )
+    )
 
     const playerGameWeeks = sortedByBenchPointsLost.map((player) => {
         
@@ -66,10 +78,10 @@ const PointsOnBenchTable = () => {
 
         return (
             <tr>
-                <td>{playerListData.indexOf(player) + 1}</td>
-                <td>{player.player_name}</td>
+                <td className="player-rank rank-name">{playerListData.indexOf(player) + 1}</td>
+                <td className="player-name rank-name">{player.player_name}</td>
                 {playersWeek}
-                <td>{Math.floor(totalLost)}</td>
+                <td>{totalLost}</td>
             </tr>
         )
     })
@@ -78,17 +90,19 @@ const PointsOnBenchTable = () => {
         <Table responsive>
             <tbody>
                 <tr>
-                    <th>Rank</th>
-                    <th>Players</th>
+                    <th className="player-rank rank-name">Rank</th>
+                    <th className="player-rank rank-name">Players</th>
                     {GameWeeks}
-                    <th>Total</th>
+                    <th className="player-rank rank-name">Total</th>
                 </tr>
                 {playerGameWeeks}
                 <tr>
-                    <td>-</td>
-                    <td>Average</td>
+                    <td className="player-rank rank-name">-</td>
+                    <td className="player-name rank-name">Average</td>
                     {displayAverages}
-                    <td>{Math.floor(totalAverage)}</td>
+                    <td className="player-rank rank-name">
+                        {totalAverage.toFixed(1)}
+                    </td>
                 </tr>
             </tbody>
         </Table>
