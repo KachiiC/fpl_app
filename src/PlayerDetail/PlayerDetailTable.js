@@ -39,7 +39,7 @@ const PlayerDetailTable = (props) => {
         ).reduce(
             (a,b) => a + b
         ) / PlayerData.matches.length
-        ).toFixed(2)
+    ).toFixed(2)
 
     // Transfers
     
@@ -60,7 +60,7 @@ const PlayerDetailTable = (props) => {
         )
     )
 
-    const averageTransfersCosts = totalTransferCosts / PlayerData.matches.length
+    const averageTransfersCosts = (totalTransferCosts / PlayerData.matches.length).toFixed(1)
 
     // Bench Points
 
@@ -71,7 +71,7 @@ const PlayerDetailTable = (props) => {
         )
     )
 
-    const averageBenchPoints = totalBenchPoints / PlayerData.matches.length
+    const averageBenchPoints = (totalBenchPoints / PlayerData.matches.length).toFixed(2)
 
     // Chips Played 
 
@@ -98,17 +98,17 @@ const PlayerDetailTable = (props) => {
                     {gameWeeks}
                     <tr>
                         <td>Averages | Totals</td>
-                        <td>{PlayerData.points_total/PlayerData.matches.length}</td>
+                        <td>{(PlayerData.points_total/PlayerData.matches.length).toFixed(1)}</td>
                         <td>{PlayerData.points_total}</td>
                         <td>£{averageTeamValue}M</td>
                         <td>
                             <b>AVG:</b> {averageTransfers} | <b>TOTAL:</b> {totalTransfers}
                         </td>
                         <td>
-                            <b>AVG:</b> {totalTransferCosts} | <b>TOTAL:</b> {averageTransfersCosts} 
+                            <b>AVG:</b> {averageTransfersCosts} | <b>TOTAL:</b> {totalTransferCosts} 
                         </td>
                         <td>
-                            <b>AVG:</b> {totalBenchPoints} | <b>TOTAL:</b> {averageBenchPoints} 
+                            <b>AVG:</b> {averageBenchPoints} | <b>TOTAL:</b> {totalBenchPoints} 
                         </td>
                     </tr>
                 </tbody>
