@@ -5,7 +5,7 @@ import TablePlayersCell from './TablePlayersCell'
 const TablePlayersRow = (props) => {
 
     const renderTotalLogic = () => {
-        if (props.type !== "points_total") {
+        if (props.type !== "points_total" && props.type !== "team_value") {
             return (
                 <TablePlayersCell
                     rating={props.total_rating}

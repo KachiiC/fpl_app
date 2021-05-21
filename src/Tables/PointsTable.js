@@ -144,7 +144,6 @@ const PointsTable = (props) => {
         />
     )
 
-    
     return (
         <div className="table-container">
             <SiteRender data={SiteFetch} component={TableLogic} />

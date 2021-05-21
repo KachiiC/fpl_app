@@ -4,7 +4,7 @@ const TableRows = (props) => {
 
     // if it isn't points_total return a total some 
     const AverageTotals = () => {
-        if (props.type !== "points_total") {
+        if (props.type !== "points_total" && props.type !== "team_value") {
             return <td>{props.total_averages}</td>
         }
     }

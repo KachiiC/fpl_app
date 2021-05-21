@@ -8,7 +8,7 @@ const TableHeaders = (props) =>  {
 
     // if it isn't points_total return a total header
     const PointsTotal = () => {
-        if (props.type !== "points_total") {
+        if (props.type !== "points_total" && props.type !== "team_value") {
             return <th>Total</th>
         }
     }
