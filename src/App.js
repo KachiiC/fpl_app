@@ -51,7 +51,7 @@ const App = () => {
             {displayPages}
             {displayPlayerPages}
             <Route path="/fpl_app">
-              <PointsTable title="Weekly Points"/>
+              <PointsTable title="Weekly Points" type="weekly_points" />
             </Route>
           </Switch>
         </main>

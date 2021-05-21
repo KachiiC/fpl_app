@@ -1,138 +1,120 @@
-import React,{useState, useEffect} from 'react'
+import React from 'react'
 // Data
-import PlayerListDataExample from 'Data/PlayerListData'
+import PlayeDataExample from 'Data/PlayerListData'
+import SiteFetcher from 'Components/SiteFetcher'
 // Components
-import Table from 'react-bootstrap/Table'
+import DisplayTable from './TableComponents/DisplayTable'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import TablePlayersRow from './TableComponents/TablePlayersRow'
+import TablePlayersCell from './TableComponents/TablePlayersCell'
+import TableCellType from './TableComponents/TableCellType'
+
+const FplLink = "https://kachiis-rest.herokuapp.com/api/fpl_players_refresh"
 
 const PointsTable = (props) => {
 
-    const dataType = props.data
-    const tableTitle = props.title
+    // FPL FETCHING DATA
+    const SiteFetch = SiteFetcher(FplLink, PlayeDataExample)
+    //FPL Data
+    const FplData = SiteFetch.response
+    // Loading Logic
+    const FplLoading = SiteFetch.isFetching
 
-    const [playerListData, setplayerListData] = useState(PlayerListDataExample)
-    const [isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-        fetch("https://kachiis-rest.herokuapp.com/api/fpl_players_refresh")
-        .then(response => response.json())
-        .then(playerDataFromServer => {
-            setplayerListData(playerDataFromServer)
-            setIsLoading(false)
-        })
-        .catch(err => console.log(err))
-    },[])
+    //// SET UPS ////
+    // Array of all points score begins as empty
+    const AllOfThePointsScored = []
+    const AllOfTheAverages = []
     
-    const singlePlayer = playerListData[0]
+    // Type Logic
+    const dataType = props.type
     
-    const GameWeeks = singlePlayer.matches.map(
-        (match) => <th>GW{match.gameweek}</th>
-    )
-
-    const numberOfMatchDays = singlePlayer.matches.length;
-    const numberOfPlayers = playerListData.length;
-    const averageOfAllTotals = playerListData.map(
-        (player) => player.points_total).reduce((a, b) => a + b) / numberOfPlayers
-
-    const allOfThePointsScored = [];
-    const allOfTheAverages = [];
-    
-    for (let y=0; y < numberOfMatchDays; y++) {
-        for (let x=0; x < playerListData.length; x++) {
+    // For loop logic that pushes points scored of each player
+    // Matches.length is detirmined by number of game weeks 
+    // FplData.length is detirmined by the number of Players
+    for (let y=0; y < FplData[0].matches.length; y++) {
+        for (let x=0; x < FplData.length; x++) {
+            // Points are detirmed by which dataType is passed through table
+            // CHANGE THIS FOR OTHER TABLES 
             if (dataType === "points_total" ) {
-                allOfThePointsScored.push(playerListData[x].matches[y].points_total);
+                AllOfThePointsScored.push(FplData[x].matches[y].points_total);
             } else {
-                allOfThePointsScored.push(playerListData[x].matches[y].game_week_points);
+                AllOfThePointsScored.push(FplData[x].matches[y].game_week_points);
             }
         }
     }
     
-    for (let i=0; i < allOfThePointsScored.length; i += numberOfPlayers) {
-        allOfTheAverages.push(
-            allOfThePointsScored.slice(i, i + numberOfPlayers)
-            .reduce((a, b) => a + b) /numberOfPlayers
+    // Average points detirmined by number of players and gameweek
+    for (let i=0; i < AllOfThePointsScored.length; i += FplData.length) {
+        // renders the average of each gameweek and pushes to the array
+        AllOfTheAverages.push(
+            AllOfThePointsScored.slice(i, i + FplData.length)
+            .reduce((a, b) => a + b) / FplData.length
         )
-    } 
+    }
+
+    // Total of all average of all player during a parti
+    const TotalsAverage = FplData.map((player) => {
+        return player.points_total
+    }).reduce((a, b) => a + b) / FplData.length
         
-    const playerGameWeeks = playerListData.map((player, index) => {
+    const playerGameWeeks = FplData.map((player, index) => {
         
         const playersWeek = player.matches.map((matchweek, index) => {
             
-            const renderType = dataType === "points_total" ? 
-                matchweek.points_total : 
+            // Detirmines type of cell
+            const typeLogic = dataType === "points_total" ? 
+                matchweek.points_total 
+                : 
                 matchweek.game_week_points
-                
-            const renderLogic = renderType >= allOfTheAverages[player.matches.indexOf(matchweek)] ? 
-            "good" : 
-            "bad"
             
+            // Compares value with average of that gameweek
+            const ratingLogic = TableCellType(
+                typeLogic, 
+                AllOfTheAverages[player.matches.indexOf(matchweek)]
+            )
+            
+            // Returns cell and color of cell based on 
             return (
-                <td className={`${renderLogic}-week`} key={index}>
-                    {dataType === "points_total" ? 
-                        matchweek.points_total : 
-                        matchweek.game_week_points
-                    }
-                </td>
+                <TablePlayersCell
+                    key={index}
+                    value={typeLogic}
+                    rating={ratingLogic}
+                />
             )
         })
 
-        const renderTotalLogic = player.points_total > averageOfAllTotals ? "good": "bad"
+        // If total of current player 
+        const renderTotalMeasure = TableCellType(player.points_total, TotalsAverage)
         
         return (
-            <tr key={index}>
-                <td className="player-rank rank-name">{playerListData.indexOf(player) + 1}</td>
-                <td className="player-name rank-name">{player.player_name}</td>
-                {playersWeek}
-                { dataType === "points_total" ?
-                    <></>:
-                    <td className={`${renderTotalLogic}-week`}>
-                        {player.points_total}
-                    </td>
-                }
-            </tr>
+            <TablePlayersRow
+                key={index}
+                type={props.type}
+                rank={FplData.indexOf(player) + 1}
+                player_name={player.player_name}
+                game_weeks={playersWeek}
+                total_rating={renderTotalMeasure}
+                total_points={player.points_total}
+            />
         )
     })
     
-    const displayAverages = allOfTheAverages.map(
-        (average, index) => <td key={index}>{average.toFixed(1)}</td>
-    )
-
-    const renderTable = isLoading ? (
+    const TableLogic = FplLoading ? 
             <CircularProgress />
-        ) : (
-        <>
-            <h2>{tableTitle}</h2>
-            <Table responsive>
-                <tbody>
-                    <tr>
-                        <th className="player-rank rank-name">Rank</th>
-                        <th className="player-name rank-name">Players</th>
-                        
-                        {GameWeeks}
-                        { dataType === "points_total" ?
-                            <></>:
-                            <th>Total</th>
-                        }
-                    </tr>
-                    {playerGameWeeks}
-                    <tr>
-                        <td className="player-rank rank-name">-</td>
-                        <td className="player-name rank-name">Average</td>
-                        {displayAverages}
-                        { dataType === "points_total" ?
-                            <></>:
-                            <td>{averageOfAllTotals.toFixed(1)}</td>
-                        }
-                    </tr>
-                </tbody>
-            </Table>
-        </>
-
-    )
+        :(
+            <DisplayTable
+                title={props.title}
+                data={FplData}
+                type={props.type}
+                rows={playerGameWeeks}
+                averages={AllOfTheAverages}
+                total_averages={TotalsAverage.toFixed(1)}
+            />
+        )
     
     return (
         <div className="table-container">
-            {renderTable}
+            {TableLogic}
         </div>
     )
 

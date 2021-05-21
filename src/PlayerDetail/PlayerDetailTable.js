@@ -1,21 +1,13 @@
 import React from 'react'
+// COMPONENTS
 import Table from 'react-bootstrap/Table'
+import PlayerMenus from 'Data/PlayerMenus'
 
 const PlayerDetailTable = (props) => {
 
     const PlayerData = props.data
 
-    const playerMenus = [
-        "GW",
-        "GW Points",
-        "Total",
-        "Team value",
-        "Transfers",
-        "Transfer Cost",
-        "Bench Points",
-    ]
-
-    const menuHeadings = playerMenus.map((menu) => <th>{menu}</th>)
+    const menuHeadings = PlayerMenus.map((menu) => <th>{menu}</th>)
 
     const gameWeeks = PlayerData.matches.map((week) => {
 
@@ -42,7 +34,6 @@ const PlayerDetailTable = (props) => {
     ).toFixed(2)
 
     // Transfers
-    
     const totalTransfers = (PlayerData.matches.map(
         player => player.game_week_transfers
         ).reduce(
@@ -63,7 +54,6 @@ const PlayerDetailTable = (props) => {
     const averageTransfersCosts = (totalTransferCosts / PlayerData.matches.length).toFixed(1)
 
     // Bench Points
-
     const totalBenchPoints = (PlayerData.matches.map(
         player => player.bench_points
         ).reduce(
@@ -73,18 +63,16 @@ const PlayerDetailTable = (props) => {
 
     const averageBenchPoints = (totalBenchPoints / PlayerData.matches.length).toFixed(2)
 
-    // Chips Played 
+    // Chips Played
+    const displayAllChips = PlayerData.chips.map((chip, index) => (
 
-    const displayAllChips = PlayerData.chips.map((chip, index) => {
-
-        return (
             <tr key={index}>
                 <td>{chip.chip_name}</td>
                 <td>{chip.chip_date}</td>
                 <td>{chip.chip_matchday}</td>
             </tr>
         )
-    })
+    )
 
     return (
         <>

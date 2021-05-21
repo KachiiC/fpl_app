@@ -1,6 +1,6 @@
 const PlayerListData = [
     {
-        "player_name": "Kach",
+        "player_name": "",
         "points_total": "",
         "transfers_total": "",
         "current_gameweek": "",

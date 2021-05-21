@@ -6,11 +6,10 @@ import PointsOnBenchTable from 'Tables/PointsOnBenchTable'
 import PointsOnTransfers from 'Tables/PointsOnTransfers'
 import PointsTable from 'Tables/PointsTable'
 
-
 const PageData = [
     {
         title: "Weekly Totals",
-        content: <PointsTable data="points_total" title="Weekly Totals"/>
+        content: <PointsTable type="points_total" title="Weekly Totals"/>
     },
     {
         title: "team value",
