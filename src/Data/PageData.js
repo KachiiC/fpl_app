@@ -1,8 +1,8 @@
 import React from 'react'
 // Data
 // Tables
-import TeamValueTable from 'Tables/TeamValueTable'
-import PointsOnBenchTable from 'Tables/PointsOnBenchTable'
+// import TeamValueTable from 'Tables/TeamValueTable'
+// import PointsOnBenchTable from 'Tables/PointsOnBenchTable'
 import PointsOnTransfers from 'Tables/PointsOnTransfers'
 import PointsTable from 'Tables/PointsTable'
 
@@ -12,15 +12,15 @@ const PageData = [
         content: <PointsTable type="points_total" title="Weekly Totals"/>
     },
     {
-        title: "team value",
-        content: <TeamValueTable />
+        title: "Team value",
+        content: <PointsTable type="team_value" title="Team Value" />
     },
     {
-        title: "bench points",
-        content: <PointsOnBenchTable />
+        title: "Bench points",
+        content: <PointsTable type="bench_points" title="Bench Points" />
     },
     {
-        title: "points on transfers",
+        title: "Points on transfers",
         content: <PointsOnTransfers />
     }
 ]

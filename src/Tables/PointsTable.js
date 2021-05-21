@@ -2,9 +2,9 @@ import React from 'react'
 // Data
 import PlayeDataExample from 'Data/PlayerListData'
 import SiteFetcher from 'Components/SiteFetcher'
+import SiteRender from 'Components/SiteRender'
 // Components
 import DisplayTable from './TableComponents/DisplayTable'
-import CircularProgress from '@material-ui/core/CircularProgress'
 import TablePlayersRow from './TableComponents/TablePlayersRow'
 import TablePlayersCell from './TableComponents/TablePlayersCell'
 import TableCellType from './TableComponents/TableCellType'
@@ -17,8 +17,6 @@ const PointsTable = (props) => {
     const SiteFetch = SiteFetcher(FplLink, PlayeDataExample)
     //FPL Data
     const FplData = SiteFetch.response
-    // Loading Logic
-    const FplLoading = SiteFetch.isFetching
 
     //// SET UPS ////
     // Array of all points score begins as empty
@@ -35,10 +33,20 @@ const PointsTable = (props) => {
         for (let x=0; x < FplData.length; x++) {
             // Points are detirmed by which dataType is passed through table
             // CHANGE THIS FOR OTHER TABLES 
-            if (dataType === "points_total" ) {
-                AllOfThePointsScored.push(FplData[x].matches[y].points_total);
-            } else {
-                AllOfThePointsScored.push(FplData[x].matches[y].game_week_points);
+            switch (dataType) {
+                case "points_total":
+                    AllOfThePointsScored.push(FplData[x].matches[y].points_total);
+                    break;
+                case "weekly_points":
+                    AllOfThePointsScored.push(FplData[x].matches[y].game_week_points);
+                    break;
+                case "team_value":
+                    AllOfThePointsScored.push(FplData[x].matches[y].team_value);
+                    break;
+                case "bench_points":
+                    AllOfThePointsScored.push(Math.floor(FplData[x].matches[y].bench_points))
+                    break;
+                default:
             }
         }
     }
@@ -52,39 +60,65 @@ const PointsTable = (props) => {
         )
     }
 
-    // Total of all average of all player during a parti
+    console.log(AllOfThePointsScored)
+    console.log(AllOfTheAverages)
+
+    // Total of all average of all players
     const TotalsAverage = FplData.map((player) => {
         return player.points_total
     }).reduce((a, b) => a + b) / FplData.length
         
-    const playerGameWeeks = FplData.map((player, index) => {
-        
-        const playersWeek = player.matches.map((matchweek, index) => {
+    // Map each player and returns their points per gameweek
+    const PlayerGameWeeks = FplData.map((player, index) => {
+
+        // Returns each game week of the player as a Table cell
+        const PlayersWeek = player.matches.map((matchweek, index) => {
+
+            var typeLogic, benchLogic
+
             
             // Detirmines type of cell
-            const typeLogic = dataType === "points_total" ? 
-                matchweek.points_total 
-                : 
-                matchweek.game_week_points
+            switch (dataType) {
+                case "points_total":
+                    typeLogic = matchweek.points_total
+                    break;
+                case "weekly_points":
+                    typeLogic = matchweek.game_week_points
+                    break
+                case "team_value":
+                    typeLogic = matchweek.team_value
+                    break
+                case "bench_points":
+                    typeLogic = matchweek.bench_points
+                    benchLogic = typeLogic > AllOfTheAverages[player.matches.indexOf(matchweek)] ? 
+                        "bad" 
+                        : 
+                        "good"
+                    break
+                default:
+                    typeLogic = matchweek.points_total
+            }
+
+            const ratingLogic = dataType !== "bench_points" ? 
+                TableCellType (
+                    typeLogic, 
+                    AllOfTheAverages[player.matches.indexOf(matchweek)]
+                )
+                : benchLogic
             
-            // Compares value with average of that gameweek
-            const ratingLogic = TableCellType(
-                typeLogic, 
-                AllOfTheAverages[player.matches.indexOf(matchweek)]
-            )
-            
-            // Returns cell and color of cell based on 
+            // Returns cell and color of cell based on weekly performance and type
             return (
                 <TablePlayersCell
                     key={index}
+                    type={dataType}
                     value={typeLogic}
                     rating={ratingLogic}
                 />
             )
         })
 
-        // If total of current player 
-        const renderTotalMeasure = TableCellType(player.points_total, TotalsAverage)
+        // If total of current player is over the average, returns "good" or else it returns bad
+        const TotalRatingLogic = TableCellType(player.points_total, TotalsAverage)
         
         return (
             <TablePlayersRow
@@ -92,29 +126,28 @@ const PointsTable = (props) => {
                 type={props.type}
                 rank={FplData.indexOf(player) + 1}
                 player_name={player.player_name}
-                game_weeks={playersWeek}
-                total_rating={renderTotalMeasure}
+                game_weeks={PlayersWeek}
+                total_rating={TotalRatingLogic}
                 total_points={player.points_total}
             />
         )
     })
     
-    const TableLogic = FplLoading ? 
-            <CircularProgress />
-        :(
-            <DisplayTable
-                title={props.title}
-                data={FplData}
-                type={props.type}
-                rows={playerGameWeeks}
-                averages={AllOfTheAverages}
-                total_averages={TotalsAverage.toFixed(1)}
-            />
-        )
+    const TableLogic = (
+        <DisplayTable
+            title={props.title}
+            data={FplData}
+            type={props.type}
+            rows={PlayerGameWeeks}
+            averages={AllOfTheAverages}
+            total_averages={TotalsAverage.toFixed(1)}
+        />
+    )
+
     
     return (
         <div className="table-container">
-            {TableLogic}
+            <SiteRender data={SiteFetch} component={TableLogic} />
         </div>
     )
 

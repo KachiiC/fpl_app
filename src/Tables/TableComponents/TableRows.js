@@ -9,12 +9,20 @@ const TableRows = (props) => {
         }
     }
 
-    const AveragesLogic = props.averages.map((average, index) => (
-        <td key={index}>
-            {average.toFixed(1)}
-        </td>
+    const AveragesLogic = props.averages.map((average, index) => {
+
+        const typeLogic = props.type === "team_value" ? 
+            `${(average /10).toFixed(1)}M`
+            :
+            average.toFixed(1)
+        
+        return (
+            <td key={index}>
+                {typeLogic}
+            </td>
         )
-    )
+    }
+        )
 
     return (
         <>
