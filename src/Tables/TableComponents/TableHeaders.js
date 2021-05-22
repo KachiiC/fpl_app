@@ -15,8 +15,8 @@ const TableHeaders = (props) =>  {
 
     return (
         <tr>
-            <th className="player-rank rank-name">Rank</th>
-            <th className="player-name rank-name">Players</th>
+            <th>Rank</th>
+            <th>Players</th>
             {GameWeeksLogic}
             {PointsTotal()}
         </tr>

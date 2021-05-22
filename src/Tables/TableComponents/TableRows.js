@@ -27,8 +27,8 @@ const TableRows = (props) => {
         <>
             {props.rows}
             <tr>
-                <td className="player-rank rank-name">-</td>
-                <td className="player-name rank-name">Average</td>
+                <td/>
+                <td>Average</td>
                 {AveragesLogic}
                 {AverageTotals()}
             </tr>

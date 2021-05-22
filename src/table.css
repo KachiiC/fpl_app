@@ -81,15 +81,13 @@ tr th:last-of-type {
 }
 
 /** transfers logic **/
-.transfer-yellow {
+.hit-week {
     background-color: khaki;
 }
 
-.transfer-red {
-    background-color: rgb(103, 0, 0);
-    color:rgb(238, 238, 238)
+.neutral-week {
+    background-color: rgb(205, 205, 205);
 }
-
 
 @media only screen and (max-width: 640px) {
     .table-container {

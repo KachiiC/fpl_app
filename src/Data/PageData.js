@@ -1,9 +1,6 @@
 import React from 'react'
 // Data
 // Tables
-// import TeamValueTable from 'Tables/TeamValueTable'
-// import PointsOnBenchTable from 'Tables/PointsOnBenchTable'
-import PointsOnTransfers from 'Tables/PointsOnTransfers'
 import PointsTable from 'Tables/PointsTable'
 
 const PageData = [
@@ -21,7 +18,7 @@ const PageData = [
     },
     {
         title: "Points on transfers",
-        content: <PointsOnTransfers />
+        content: <PointsTable type="transfer_points" title="Transfer Points" />
     }
 ]
 
