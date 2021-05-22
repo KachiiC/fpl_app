@@ -54,7 +54,7 @@ const TeamValueTable = () => {
         const playersWeek = player.matches.map((matchweek) => {
 
             const renderLogic = matchweek.team_value > allOfTheAverages[player.matches.indexOf(matchweek)] ?
-            "good" : "bad"
+                "good" : "bad"
 
             return (
                 <td className={`${renderLogic}-week`}>

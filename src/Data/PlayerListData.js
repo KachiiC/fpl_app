@@ -1,12 +1,19 @@
 const PlayerListData = [
     {
         "player_name": "",
+        "player_id": "",
         "points_total": "",
         "transfers_total": "",
         "current_gameweek": "",
+        "chips": [
+            {
+                "chip_name": "",
+                "chip_date": "",
+                "chip_matchday": ""
+            }
+        ],
         "matches": [
             {
-                "player_id": "",
                 "gameweek": "",
                 "game_week_points": "",
                 "points_total": "",
@@ -14,7 +21,7 @@ const PlayerListData = [
                 "game_week_transfers": "",
                 "game_week_transfers_cost": "",
                 "bench_points": ""
-            },
+            }
         ]
     }
 ]

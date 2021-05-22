@@ -6,7 +6,7 @@ const TablePlayersCell = (props) => {
 
     return (
 
-        <td className={`${props.rating}-week`}>
+        <td className={`${props.rating}-week ${props.table_style}`}>
             {valueLogic}
         </td>
     )

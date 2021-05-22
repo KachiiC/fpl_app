@@ -34,19 +34,25 @@ const PointsTable = (props) => {
             // Points are detirmed by which dataType is passed through table
             // CHANGE THIS FOR OTHER TABLES 
             switch (dataType) {
-                case "points_total":
-                    AllOfThePointsScored.push(FplData[x].matches[y].points_total);
-                    break;
                 case "weekly_points":
+                    // Pushes points scored by each player each game week
                     AllOfThePointsScored.push(FplData[x].matches[y].game_week_points);
                     break;
+                case "points_total":  
+                    // Pushes points total of each player, each week
+                    AllOfThePointsScored.push(FplData[x].matches[y].points_total);
+                    break;
                 case "team_value":
+                    // Pushes team value of each player each game week
                     AllOfThePointsScored.push(FplData[x].matches[y].team_value);
                     break;
                 case "bench_points":
+                    // Pushes bench points of each player each game week
                     AllOfThePointsScored.push(Math.floor(FplData[x].matches[y].bench_points))
                     break;
                 default:
+                    // // Return game week points as default
+                    // AllOfThePointsScored.push(FplData[x].matches[y].game_week_points);
             }
         }
     }
@@ -56,69 +62,142 @@ const PointsTable = (props) => {
         // renders the average of each gameweek and pushes to the array
         AllOfTheAverages.push(
             AllOfThePointsScored.slice(i, i + FplData.length)
-            .reduce((a, b) => a + b) / FplData.length
+            .reduce((a, b) => a + b) 
+            / FplData.length
         )
     }
 
-    console.log(AllOfThePointsScored)
-    console.log(AllOfTheAverages)
+    // Total Average  and Sort will be based on value types
+    var TotalsAverage, SortLogic
 
     // Total of all average of all players
-    const TotalsAverage = FplData.map((player) => {
-        return player.points_total
-    }).reduce((a, b) => a + b) / FplData.length
-        
+    switch (dataType) {
+
+        case "weekly_points":
+            // Returns the Average Points Total
+            TotalsAverage = FplData.map(player => 
+                player.points_total
+            ).reduce((a, b) => a + b) / FplData.length
+            // Already sorted according to points so can leave as default
+            SortLogic = FplData
+            break;
+        case "bench_points":
+            // Returns the Average Bench Points Total
+            TotalsAverage = FplData.map(player => player.matches
+                    .map(match => match.bench_points)
+                    .reduce((a, b) => a + b))
+                    .reduce((a, b) => a + b) 
+                    / FplData.length
+            // sort by who has the most bench points in total
+            SortLogic = FplData.sort((a, b) => {
+
+                const reducer = (item) => item.matches.map((week) => 
+                        week.bench_points
+                    )
+                    .reduce((a,b) => a + b)
+
+                return reducer(a) - reducer(b)
+            }
+            )
+            break
+        case "team_value":
+            // sort by highest team value 
+            SortLogic = FplData.sort((a, b) => 
+                b.matches[b.matches.length - 1].team_value 
+                - 
+                a.matches[a.matches.length - 1].team_value
+            )
+            break
+        default:
+            // default 
+            SortLogic = FplData
+    }
+
     // Map each player and returns their points per gameweek
-    const PlayerGameWeeks = FplData.map((player, index) => {
+    const PlayerGameWeeks = SortLogic.map((player, index) => {
 
         // Returns each game week of the player as a Table cell
         const PlayersWeek = player.matches.map((matchweek, index) => {
 
-            var typeLogic, benchLogic
-
+            // Value and Bench detirmines the following varriables
+            // Intitally set as empty
+            var ValueLogic, BenchLogic
             
             // Detirmines type of cell
             switch (dataType) {
                 case "points_total":
-                    typeLogic = matchweek.points_total
+                    // returns points total end of matchweek
+                    ValueLogic = matchweek.points_total
                     break;
                 case "weekly_points":
-                    typeLogic = matchweek.game_week_points
+                    // returns points scored that of matchweek
+                    ValueLogic = matchweek.game_week_points
                     break
                 case "team_value":
-                    typeLogic = matchweek.team_value
+                    // returns team value by the end of matchweek
+                    ValueLogic = matchweek.team_value
                     break
                 case "bench_points":
-                    typeLogic = matchweek.bench_points
-                    benchLogic = typeLogic > AllOfTheAverages[player.matches.indexOf(matchweek)] ? 
-                        "bad" 
-                        : 
-                        "good"
+                    // returns points scored by players on your bench
+                    ValueLogic = matchweek.bench_points
+                    // If value is higher that average will return bad
+                    // the less points score by bench players the better
+                    BenchLogic = ValueLogic > AllOfTheAverages[player.matches.indexOf(matchweek)] ? 
+                        "bad" : "good"
                     break
                 default:
-                    typeLogic = matchweek.points_total
+                    // default is blank
             }
 
-            const ratingLogic = dataType !== "bench_points" ? 
-                TableCellType (
-                    typeLogic, 
-                    AllOfTheAverages[player.matches.indexOf(matchweek)]
-                )
-                : benchLogic
+            // Rating detirmines color of the cell based comparrison to average 
+            const ratingLogic = dataType === "bench_points" ? 
+                // Logic reversed for bench points
+                BenchLogic
+                :
+                // Returns green or red cell depending matchweek point type's comparrison to average
+                TableCellType (ValueLogic, AllOfTheAverages[player.matches.indexOf(matchweek)])
             
             // Returns cell and color of cell based on weekly performance and type
             return (
                 <TablePlayersCell
                     key={index}
                     type={dataType}
-                    value={typeLogic}
                     rating={ratingLogic}
+                    value={ValueLogic}
                 />
             )
         })
+        
+        // Total Logic detirmines total of value across the season
+        // Intitally set as empty
+        var TotalsLogic, BenchTotalsLogic
+
+        // Switch will only active for bench points and weekly points
+        switch(dataType) {
+            case "bench_points":
+                // Gets players total number of bench points
+                TotalsLogic = player.matches.map((matchweek) => matchweek.bench_points)
+                    .reduce((a,b) => a + b)
+                // If value is higher that average will return bad
+                // the less points score by bench players the better
+                BenchTotalsLogic = TotalsLogic > TotalsAverage ? 
+                    "bad" : "good"
+                break;
+            case "weekly_points":
+                // Gets players total number of points
+                TotalsLogic = player.points_total
+                break
+            default:
+                // default is blank
+        }
 
         // If total of current player is over the average, returns "good" or else it returns bad
-        const TotalRatingLogic = TableCellType(player.points_total, TotalsAverage)
+        const TotalRatingLogic = dataType === "bench_points" ?
+            // Logic reversed for bench points
+            BenchTotalsLogic
+            :
+            // Returns green or red cell total in comparrison to average
+            TableCellType(TotalsLogic, TotalsAverage)
         
         return (
             <TablePlayersRow
@@ -128,7 +207,7 @@ const PointsTable = (props) => {
                 player_name={player.player_name}
                 game_weeks={PlayersWeek}
                 total_rating={TotalRatingLogic}
-                total_points={player.points_total}
+                total_points={TotalsLogic}
             />
         )
     })
@@ -140,7 +219,7 @@ const PointsTable = (props) => {
             type={props.type}
             rows={PlayerGameWeeks}
             averages={AllOfTheAverages}
-            total_averages={TotalsAverage.toFixed(1)}
+            total_averages={TotalsAverage}
         />
     )
 

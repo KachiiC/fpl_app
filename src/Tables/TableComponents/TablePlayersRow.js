@@ -17,12 +17,8 @@ const TablePlayersRow = (props) => {
     
     return (
         <tr>
-            <td className="player-rank rank-name">
-                {props.rank}
-            </td>
-            <td className="player-name rank-name">
-                {props.player_name}
-            </td>
+            <td>{props.rank}</td>
+            <td>{props.player_name}</td>
             {props.game_weeks}
             {renderTotalLogic()}
         </tr>

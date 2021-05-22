@@ -21,8 +21,7 @@ const TableRows = (props) => {
                 {typeLogic}
             </td>
         )
-    }
-        )
+    })
 
     return (
         <>
