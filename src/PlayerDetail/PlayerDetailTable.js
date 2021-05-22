@@ -24,8 +24,6 @@ const PlayerDetailTable = (props) => {
         )
     })
 
-
-
     const averageTeamValue = (PlayerData.matches.map(
         player => player.team_value /10
         ).reduce(

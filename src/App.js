@@ -11,7 +11,8 @@ import PointsTable from './Tables/PointsTable';
 // Data
 import PageData from 'Data/PageData';
 import PlayerListData from 'Data/PlayerListData'
-import PlayerDetailTable from './PlayerDetail/PlayerDetailTable';
+// import PlayerDetailTable from './PlayerDetail/PlayerDetailTable';
+import PlayerDetail from './PlayerDetail';
 
 
 const App = () => {
@@ -38,7 +39,7 @@ const App = () => {
 
   const displayPlayerPages = playerListData.map((player, index) => (
       <Route path={`/player/${player.player_name}`} key={index}>
-        <PlayerDetailTable data={player}/>
+        <PlayerDetail data={player}/>
       </Route>
   ))
 
@@ -50,7 +51,7 @@ const App = () => {
           <Switch>
             {displayPages}
             {displayPlayerPages}
-            <Route path="/fpl_app">
+            <Route path="/">
               <PointsTable title="Weekly Points" type="weekly_points" />
             </Route>
           </Switch>
