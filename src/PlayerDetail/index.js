@@ -1,6 +1,7 @@
 import React from 'react'
 // import PlayerDetailTable from './PlayerDetailTable'
 import AntdTabs from '../Components/AntdTabs'
+import DetailTables from './DetailTables/DetailTables'
 import SumamryTable from './DetailTables/SummaryTable'
 
 
@@ -13,7 +14,7 @@ const PlayerDetail = (props) => {
         },
         {
             title: "Detailed",
-            content: "content 2"
+            content: <DetailTables title="Detailed Table" data={props.data} />
         },
         {
             title: "Chips",
@@ -23,7 +24,8 @@ const PlayerDetail = (props) => {
 
     return (
         <>
-            <h1>{props.name}</h1>
+            <h2>{props.data.player_name}</h2>
+            <h4>{props.data.team_name}</h4>
             <AntdTabs data={pageContent} />
         </>
     )

@@ -1,0 +1,7 @@
+.material-table-heading {
+    text-transform: capitalize;
+}
+
+.material-ui-content-container {
+    margin: 25px auto;
+}

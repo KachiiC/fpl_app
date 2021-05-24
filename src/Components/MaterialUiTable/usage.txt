@@ -1,0 +1,22 @@
+Example Data:
+* Include a content key if you want dropdowns
+** Table will render each value and key on the table
+    
+    const ExampleData = [
+        {
+            value1: "",
+            value2: "",
+            value3: "",
+            content: ""
+        }
+    ]
+
+Usage:
+* Set the table columns to the number you want displayed (shows all by default) 
+** If you included a content key, remember to edit table columns
+
+    <MaterialUITable
+        data={ExampleData}
+        table_columns={3}
+    />
+

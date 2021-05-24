@@ -1,0 +1,25 @@
+.summary-table {
+    margin: 20px auto;
+}
+
+.player-summary-card {
+    margin: 25px auto;
+}
+
+.labels-description-box {
+    padding-left: 2%;
+    /* text-align: left; */
+}
+
+@media screen and (max-width: 1080px) {
+    .summary-table .site-span-3{
+        grid-column: span 6;
+    }
+  
+}
+
+@media screen and (max-width: 640px) {
+    .summary-table .site-span-3{
+        grid-column: span 12;
+    }
+}
