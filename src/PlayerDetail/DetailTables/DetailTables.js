@@ -44,7 +44,6 @@ const DetailTables = (props) => {
     
     return (
         <>
-            <h1>Detailed Table</h1>
             <MaterialUiTable data={tableData} />
         </>
     )

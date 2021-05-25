@@ -3,6 +3,7 @@ import React from 'react'
 import AntdTabs from '../Components/AntdTabs'
 import DetailTables from './DetailTables/DetailTables'
 import SumamryTable from './DetailTables/SummaryTable'
+import ChipsTable from './DetailTables/ChipTables'
 
 
 const PlayerDetail = (props) => {
@@ -18,7 +19,7 @@ const PlayerDetail = (props) => {
         },
         {
             title: "Chips",
-            content: "content 3"
+            content: <ChipsTable data={props.data.chips} />
         }  
     ]
 
