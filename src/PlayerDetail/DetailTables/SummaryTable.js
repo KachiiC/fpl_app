@@ -26,7 +26,6 @@ const SumamryTable = (props) => {
                 labelName = "TRANSFERS"
                 labelDescription = (
                     <div className="labels-description-box">
-                        {/* <p><b>Total Transfers: </b>{props.data.transfers_total}</p> */}
                         <h5>{props.data.transfers_total}</h5>
                         <p><b>Points Spent On Transfers: </b>{props.data.points_on_transfers}</p>
                     </div>
@@ -39,7 +38,6 @@ const SumamryTable = (props) => {
                         <h5>{summaryHeadings[label]}</h5>
                         <p><b>Last GW ({props.data.current_gameweek})</b>: {props.data.last_gameweek_points} points</p>
                     </>
-                    
                 )
                 break
             case "team_value":

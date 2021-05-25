@@ -10,7 +10,7 @@ import TableCollapsableRow from './TableCollapsableRow';
 
 const TableSingleRow = (props) => {
     
-    const rowContent = Object.keys(props.row).filter(heading => heading !== "content")
+    const rowContent = Object.keys(props.row).filter(heading => heading !== "content").slice(0,3)
 
     // By default rows are closed and content is hidden
     const [open, setOpen] = useState(false)
