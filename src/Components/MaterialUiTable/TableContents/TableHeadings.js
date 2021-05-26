@@ -1,5 +1,6 @@
 import React from 'react'
 // COMPONENTS
+import SiteLabelRender from 'Tables/TableTools/SiteLabelRender'
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TableHead from '@material-ui/core/TableHead';
@@ -10,13 +11,18 @@ const TableHeadings = (props) => {
     const table_headings = Object.keys(props.data[0]).filter(heading => heading !== "content").slice(0,3)
     
     // Renders the keys for each object 
-    const renderHeadings = table_headings.map(
-        (heading, index) => (
+    const renderHeadings = table_headings.map((heading, index) => {
+
+        const headingLogic = SiteLabelRender(heading)
+        
+        return(
             <TableCell align="center" key={index}>
-                <b className="material-table-heading">{heading}</b>
+                <b className="material-table-heading">
+                    {headingLogic}
+                </b>
             </TableCell>
         )
-    )
+    })
     
     return (
         <TableHead>

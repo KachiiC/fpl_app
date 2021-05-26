@@ -1,12 +1,10 @@
 import React from 'react'
 // COMPONENTS
-import { Card } from 'antd';
 import SiteLabelRender from 'Tables/TableTools/SiteLabelRender';
+import AntdCard from 'Components/AntdCard';
 
 
 const ChipTables = (props) => {
-
-    const { Meta } = Card;
 
     const displayChips = props.data.map((chip) => {
 
@@ -18,16 +16,17 @@ const ChipTables = (props) => {
         )
 
         return (
-            <Card className="site-span-4 w-80 player-summary-card">
-                <Meta title={`${ SiteLabelRender(chip.chip_name)}:`}
-                    className="text-center"
-                    description={descriptionLogic}
-                />
-            </Card>
+            <AntdCard 
+                width={80}
+                span={"4"}
+                className="text-center"
+                title={`${ SiteLabelRender(chip.chip_name)}`}
+                description={descriptionLogic}
+            />
         )
     })
 
-    const filteredCards =  props.data.length === 5 ? "none" : 5 - props.data.length
+    const filteredCards =  props.data.length === 5 ? "None" : 5 - props.data.length
 
     const summary_card = (
         <div>
@@ -36,13 +35,13 @@ const ChipTables = (props) => {
     )
 
     return (
-        <div className="site-grid-system">
-            <Card className="site-span-4 w-80 player-summary-card">
-                <Meta title="Chips Remaining:"
-                    className="text-center"
-                    description={summary_card}
-                />
-            </Card>
+        <div className="site-grid-system detail-table">
+            <AntdCard 
+                width={80}
+                span={4}
+                title="Chips Remaining"
+                description={summary_card}
+            />
             {displayChips}
         </div>
     )

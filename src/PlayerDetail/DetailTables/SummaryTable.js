@@ -1,12 +1,10 @@
 import React from 'react'
-import { Card } from 'antd';
 import SiteLabelRender from 'Tables/TableTools/SiteLabelRender';
 // CSS
 import 'PlayerDetail/PlayerDetail.css'
+import AntdCard from 'Components/AntdCard';
 
 const SumamryTable = (props) => {
-
-    const { Meta } = Card;
 
     const summaryHeadings = {
         player_id:  props.data.player_id,
@@ -50,20 +48,15 @@ const SumamryTable = (props) => {
         }
  
         return (
-            <Card className="site-span-3 w-90 player-summary-card">
-                <Meta title={`${labelName}:`}
-                    description={labelDescription}
-                    // avatar={label_avatar}
-                />
-            </Card>
+            <AntdCard title={`${labelName}:`}
+                description={labelDescription}
+            />
         )
     })
 
     return (
-        <div className="summary-table">
-            <div className="w-90 m-auto site-grid-system">
-                {displayDecription}
-            </div>
+        <div className="w-90 m-auto site-grid-system detail-table">
+            {displayDecription}
         </div>
     )
 }

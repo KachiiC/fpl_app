@@ -12,55 +12,55 @@
     width: 80%;
 }
 
-table {
+.table-container table {
     border-collapse: separate;
     border-spacing: 0;
     border-top: 1px solid #808080;
 }
 
-td,
-th {
+.table-container td,
+.table-container th {
     border: 1px solid #dddddd;
     text-align: center;
 }
 
-tr {
+.table-container tr {
     font-size: 15px;
 }
 
-tr th:nth-child(1),
-tr th:nth-child(2),
-tr th:last-of-type,
-tr td:nth-child(1),
-tr td:nth-child(2),
-tr td:last-of-type {
+.table-container tr th:nth-child(1),
+.table-container tr th:nth-child(2),
+.table-container tr th:last-of-type,
+.table-container tr td:nth-child(1),
+.table-container tr td:nth-child(2),
+.table-container tr td:last-of-type {
     position: -webkit-sticky;
     position: sticky;
 }
 
-tr th:nth-child(1),
-tr th:nth-child(2),
-tr td:nth-child(1),
-tr td:nth-child(2),
-tr th:last-of-type,
-tr:last-of-type td:last-of-type {
+.table-container tr th:nth-child(1),
+.table-container tr th:nth-child(2),
+.table-container tr td:nth-child(1),
+.table-container tr td:nth-child(2),
+.table-container tr th:last-of-type,
+.table-container tr:last-of-type td:last-of-type {
     background-color: white;
 }
 
-tr th:nth-child(1),
-tr td:nth-child(1) {
+.table-container tr th:nth-child(1),
+.table-container tr td:nth-child(1) {
     min-width: 60px;
     left: -1px;
 }
 
-tr th:nth-child(2),
-tr td:nth-child(2) {
+.table-container tr th:nth-child(2),
+.table-container tr td:nth-child(2) {
     min-width: 150px;
     left: 49px;
 }
 
-tr td:last-of-type,
-tr th:last-of-type {
+.table-container tr td:last-of-type,
+.table-container tr th:last-of-type {
     width: 52px;
     right: -1px;
 }

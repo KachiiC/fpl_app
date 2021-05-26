@@ -1,6 +1,6 @@
 import React from 'react'
-// import PlayerDetailTable from './PlayerDetailTable'
-import AntdTabs from '../Components/AntdTabs'
+// COMPONENTS
+import AntdTabs from 'Components/AntdTabs'
 import DetailTables from './DetailTables/DetailTables'
 import SumamryTable from './DetailTables/SummaryTable'
 import ChipsTable from './DetailTables/ChipTables'

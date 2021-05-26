@@ -1,4 +1,4 @@
-.summary-table {
+.detail-table {
     margin: 20px auto;
 }
 
@@ -12,14 +12,16 @@
 }
 
 @media screen and (max-width: 1080px) {
-    .summary-table .site-span-3{
+    .detail-table .site-span-3,
+    .detail-table .site-span-4 {
         grid-column: span 6;
     }
   
 }
 
 @media screen and (max-width: 640px) {
-    .summary-table .site-span-3{
+    .detail-table .site-span-3,
+    .detail-table .site-span-4 {
         grid-column: span 12;
     }
 }

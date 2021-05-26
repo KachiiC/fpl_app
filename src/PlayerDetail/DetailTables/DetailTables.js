@@ -1,11 +1,9 @@
 // import react from 'react'
-import { Card } from 'antd';
 import SiteLabelRender from 'Tables/TableTools/SiteLabelRender';
 import MaterialUiTable from 'Components/MaterialUiTable'
+import AntdCard from 'Components/AntdCard';
 
 const DetailTables = (props) => {
-    
-    const { Meta } = Card;
 
     const tableData = props.data.matches.map((match) => {
 
@@ -24,17 +22,16 @@ const DetailTables = (props) => {
             }
 
             return (
-                <Card className="site-span-3 w-90 player-summary-card">
-                    <Meta title={`${ SiteLabelRender(card)}:`}
-                        className="text-center"
-                        description={descriptionLogic()}
-                    />
-                </Card>
+                <AntdCard 
+                    className="text-center"
+                    title={`${ SiteLabelRender(card)}`}
+                    description={descriptionLogic()}
+                />
             )
         })
 
         match.content = (
-            <div className="site-grid-system">
+            <div className="site-grid-system detail-table">
                 {displayedContent}
             </div>
         )
@@ -42,11 +39,8 @@ const DetailTables = (props) => {
         return match
     })
     
-    return (
-        <>
-            <MaterialUiTable data={tableData} />
-        </>
-    )
+    return <MaterialUiTable data={tableData} />
+
 }
 
 export default DetailTables
