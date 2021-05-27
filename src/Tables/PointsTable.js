@@ -10,14 +10,14 @@ import TablePlayersCell from './TableComponents/TablePlayersCell'
 import TableCellType from './TableComponents/TableCellType'
 import SiteReducer from './TableTools/SiteReducer'
 
-const FplLink = "https://kachiis-rest.herokuapp.com/api/fpl_players_refresh"
+// const FplLink = "https://kachiis-rest.herokuapp.com/api/fpl_players_refresh"
 
 const PointsTable = (props) => {
 
     // FPL FETCHING DATA
-    const SiteFetch = SiteFetcher(FplLink, PlayeDataExample)
+    // const SiteFetch = SiteFetcher(FplLink, PlayeDataExample)
     //FPL Data
-    const FplData = SiteFetch.response
+    const FplData = props.data
 
     //// SET UPS ////
     // Array of all points score begins as empty
@@ -253,21 +253,17 @@ const PointsTable = (props) => {
             />
         )
     })
-    
-    const TableLogic = (
-        <DisplayTable
-            title={props.title}
-            data={FplData}
-            type={props.type}
-            rows={PlayerGameWeeks}
-            averages={AllOfTheAverages}
-            total_averages={TotalsAverage}
-        />
-    )
 
     return (
         <div className="table-container">
-            <SiteRender data={SiteFetch} component={TableLogic} />
+            <DisplayTable
+                title={props.title}
+                data={FplData}
+                type={props.type}
+                rows={PlayerGameWeeks}
+                averages={AllOfTheAverages}
+                total_averages={TotalsAverage}
+            />
         </div>
     )
 
