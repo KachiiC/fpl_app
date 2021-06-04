@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 // Components
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import TableCollapsableRow from './TableCollapsableRow';
+import TableCell from '@material-ui/core/TableCell'
+import TableRow from '@material-ui/core/TableRow'
+import TableCollapsableRow from './TableCollapsableRow'
+// ICONS
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronCircleDown, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 
 const TableSingleRow = (props) => {
@@ -26,23 +26,17 @@ const TableSingleRow = (props) => {
         )
     )
 
-    const arrowLogic = open ? 
-        <KeyboardArrowDownIcon /> 
-        : 
-        <ChevronRightIcon />
-
+    const arrowLogic = !open ? faChevronCircleRight : faChevronCircleDown 
 
     const dropDownLogic = () => {
         if (props.content) {
             return (
-                <IconButton 
-                    key={props.index} 
-                    aria-label="expand row" 
-                    size="small" 
+                <FontAwesomeIcon 
+                    icon={arrowLogic}
+                    size="lg" 
                     onClick={openLogic}
-                >
-                    {arrowLogic}
-                </IconButton>
+                    className="cursor-pointer"
+                />
             )
         }
     }

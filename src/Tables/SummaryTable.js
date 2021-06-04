@@ -27,7 +27,7 @@ const SummaryTable = (props) => {
     return (
         <>
             <h1>Table</h1>
-            <div className="w-90 m-auto site-overflow">
+            <div className="w-80 m-auto site-overflow">
                 <Table columns={columns} dataSource={myData}  pagination={paginationLogic}/>
             </div>
         </>

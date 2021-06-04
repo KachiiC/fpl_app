@@ -4,7 +4,7 @@
 .nav-dropdown-menu,
 .nav-dropdown-menu-link {
     background-color: rgb(29, 29, 29) !important;
-    color: white !important;
+    color: white;
 }
 
 .nav-links,
@@ -16,11 +16,45 @@
 .nav-links {
     cursor: pointer;
     text-transform: capitalize;
-    margin: 10px;
+    margin: 0px 10px;
+}
+
+@media only screen and (max-width: 1027px) {
+    .nav-links,
+    .nav-dropdown-menu-link {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 965px) {
+    .nav-links,
+    .nav-dropdown-menu-link {
+        font-size: 16px;
+    }
+
+}
+
+@media only screen and (max-width: 898px) {
+    .nav-links,
+    .nav-dropdown-menu-link {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    .nav-links,
+    .nav-dropdown-menu-link {
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .nav-dropdown-menu-link {
         width: 100%;
+    }
+
+    .nav-links,
+    .nav-dropdown-menu-link {
+        font-size: 20px;
     }
 }
