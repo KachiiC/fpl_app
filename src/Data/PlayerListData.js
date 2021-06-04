@@ -1,29 +1,34 @@
 const PlayerListData = [
     {
+        "player_id": 0,
         "player_name": "",
-        "player_id": "",
-        "points_total": "",
-        "transfers_total": "",
-        "current_gameweek": "",
+        "team_name": "",
+        "current_gameweek": 0,
+        "last_gameweek_points": 0,
+        "points_total": 0,
+        "transfers_total": 0,
+        "points_on_transfers": 0,
+        "team_value": 0,
         "chips": [
             {
+                "chip_owner": "",
                 "chip_name": "",
                 "chip_date": "",
-                "chip_matchday": ""
+                "chip_matchday": 1
             }
         ],
         "matches": [
             {
-                "gameweek": "",
-                "game_week_points": "",
-                "points_total": "",
-                "team_value": "",
-                "game_week_transfers": "",
-                "game_week_transfers_cost": "",
-                "bench_points": ""
-            }
+                "gameweek": 1,
+                "game_week_points": 0,
+                "points_total": 0,
+                "team_value": 0,
+                "game_week_transfers": 0,
+                "game_week_transfers_cost": 0,
+                "bench_points": 0
+            } 
         ]
     }
 ]
-
+    
 export default PlayerListData

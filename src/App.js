@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 // CSS
 import './App.css';
 import './table.css'
@@ -10,71 +10,44 @@ import SiteNavbar from './Components/SiteNavbar'
 import PointsTable from './Tables/PointsTable';
 // Data
 // import PageData from 'Data/PageData';
-import PlayeDataExample from 'Data/PlayerListData'
-import PlayerListData from 'Data/PlayerListData'
-// import PlayerDetailTable from './PlayerDetail/PlayerDetailTable';
+// import PageData, {playerListData, SiteFetch} from 'Data/PageData'
+import SiteFetcher from 'Components/SiteFetcher'
+import SiteRender from 'Components/SiteRender'
 import PlayerDetail from './PlayerDetail';
+import PlayerDataExample from 'Data/PlayerListData'
+import SummaryTable from './Tables/SummaryTable';
 
+
+const FplLink = "https://kachiis-rest.herokuapp.com/api/fpl_players_refresh"
 
 const App = () => {
 
-  const [playerListData, setplayerListData] = useState(PlayerListData)
-  const [fplData, setFplData] = useState("")
-  const [isLoading, setIsLoading] = useState(true)
-  const [isDisplayable, setIsDisplayable] = useState(false)
-
-  const submitLogic = e => {
-    e.preventDefault()
-    setFplData(document.getElementById("league_id").value)
-  }
-
-  useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/fpl_league_search/${fplData}`)
-    .then(response => response.json())
-    .then(jsonData => {
-        setIsLoading(false)
-        setIsDisplayable(true)
-        setplayerListData(jsonData)
-      })
-    .catch(err => {
-      setIsDisplayable(false)
-      console.log(err)
-    })
-  },[fplData])
+  const SiteFetch = SiteFetcher(FplLink, PlayerDataExample)
+  const responseData = SiteFetch.response
 
   const PageData = [
     {
+      title: "Weekly Points",
+      content: <PointsTable data={responseData} title="Weekly Points" type="weekly_points" />
+
+    },
+    {
         title: "Weekly Totals",
-        content: <PointsTable type="points_total" title="Weekly Totals" data={playerListData} />
+        content: <PointsTable type="points_total" title="Weekly Totals" data={responseData} />
     },
     {
         title: "Team value",
-        content: <PointsTable type="team_value" title="Team Value" data={playerListData} />
+        content: <PointsTable type="team_value" title="Team Value" data={responseData} />
     },
     {
         title: "Bench points",
-        content: <PointsTable type="bench_points" title="Bench Points" data={playerListData} />
+        content: <PointsTable type="bench_points" title="Bench Points" data={responseData} />
     },
     {
         title: "Points on transfers",
-        content: <PointsTable type="transfer_points" title="Transfer Points" data={playerListData} />
+        content: <PointsTable type="transfer_points" title="Transfer Points" data={responseData} />
     }
   ]
-
-  const renderLogic = (content) => {
-    if (playerListData !== PlayerListData) {
-    return isLoading ? (
-      <div>
-          This is loading right
-      </div>
-    ):
-      isDisplayable ? 
-        content
-      :(
-        <div>Unable to display</div>
-      )
-    }
-  }
    
   const displayPages = PageData.map((page, index) => {
 
@@ -82,30 +55,36 @@ const App = () => {
 
     return (
       <Route path={`/fpl_app/${pageLink}`} key={index}>
-        {renderLogic(page.content)}
+        <SiteRender
+          component={page.content}
+          data={SiteFetch}
+        />
       </Route>
     )
   })
 
-  const displayPlayerPages = playerListData.map((player, index) => (
-      <Route path={`/player/${player.player_name}`} key={index}>
-        <PlayerDetail data={player}/>
+  const displayPlayerPages = responseData.map((player, index) => (
+      <Route path={`/fpl_app/player/${player.player_name}`} key={index}>
+        <SiteRender
+          component={<PlayerDetail data={player}/>}
+          data={SiteFetch}
+        />
       </Route>
   ))
 
   return (
     <div className="App">
       <BrowserRouter>
-        <SiteNavbar />
+        <SiteNavbar data={responseData}/>
         <main>
-          <form onSubmit={submitLogic}>
-            <input type="text" id="league_id"/>
-          </form>
           <Switch>
             {displayPages}
             {displayPlayerPages}
             <Route path="/">
-              {renderLogic(<PointsTable data={playerListData} title="Weekly Points" type="weekly_points" />)}
+              <SiteRender
+                component={<SummaryTable data={responseData}/>}
+                data={SiteFetch}
+              />
             </Route>
           </Switch>
         </main>

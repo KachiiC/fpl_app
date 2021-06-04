@@ -1,8 +1,8 @@
 import React from 'react'
 // Data
-import PlayeDataExample from 'Data/PlayerListData'
-import SiteFetcher from 'Components/SiteFetcher'
-import SiteRender from 'Components/SiteRender'
+// import PlayeDataExample from 'Data/PlayerListData'
+// import SiteFetcher from 'Components/SiteFetcher'
+// import SiteRender from 'Components/SiteRender'
 // Components
 import DisplayTable from './TableComponents/DisplayTable'
 import TablePlayersRow from './TableComponents/TablePlayersRow'
@@ -10,12 +10,9 @@ import TablePlayersCell from './TableComponents/TablePlayersCell'
 import TableCellType from './TableComponents/TableCellType'
 import SiteReducer from './TableTools/SiteReducer'
 
-// const FplLink = "https://kachiis-rest.herokuapp.com/api/fpl_players_refresh"
 
 const PointsTable = (props) => {
 
-    // FPL FETCHING DATA
-    // const SiteFetch = SiteFetcher(FplLink, PlayeDataExample)
     //FPL Data
     const FplData = props.data
 
