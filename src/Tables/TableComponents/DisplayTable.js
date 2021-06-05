@@ -1,7 +1,6 @@
 import React from 'react'
 // COMPONENTS
 import Table from 'react-bootstrap/Table'
-// COMPONENTS
 import TableHeaders from './TableHeaders'
 import TableRows from './TableRows'
 
