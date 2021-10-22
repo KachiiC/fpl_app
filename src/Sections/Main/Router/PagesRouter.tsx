@@ -12,7 +12,7 @@ import Home from "../Pages/Home";
 
 const PagesRouter = () => {
     // URL
-    const FplLink = "http://kachiis-rest.herokuapp.com/api/fpl/league=401369"
+    const FplLink = "https://kachiis-rest.herokuapp.com/api/fpl/league=401369"
     // FETCH LOGIC
     const fetch = SiteFetcher(FplLink)
     const responseData = fetch.response
