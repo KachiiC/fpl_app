@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/fpl_app/static/css/main.b8914b05.chunk.css",
-    "main.js": "/fpl_app/static/js/main.973e9a62.chunk.js",
-    "main.js.map": "/fpl_app/static/js/main.973e9a62.chunk.js.map",
-    "runtime-main.js": "/fpl_app/static/js/runtime-main.db6566d5.js",
-    "runtime-main.js.map": "/fpl_app/static/js/runtime-main.db6566d5.js.map",
-    "static/css/2.c7bc3a6e.chunk.css": "/fpl_app/static/css/2.c7bc3a6e.chunk.css",
-    "static/js/2.a504da41.chunk.js": "/fpl_app/static/js/2.a504da41.chunk.js",
-    "static/js/2.a504da41.chunk.js.map": "/fpl_app/static/js/2.a504da41.chunk.js.map",
-    "static/js/3.49da025c.chunk.js": "/fpl_app/static/js/3.49da025c.chunk.js",
-    "static/js/3.49da025c.chunk.js.map": "/fpl_app/static/js/3.49da025c.chunk.js.map",
+    "main.css": "/fpl_app/static/css/main.e845eb61.chunk.css",
+    "main.js": "/fpl_app/static/js/main.33bbae36.chunk.js",
+    "main.js.map": "/fpl_app/static/js/main.33bbae36.chunk.js.map",
+    "runtime-main.js": "/fpl_app/static/js/runtime-main.799d7db4.js",
+    "runtime-main.js.map": "/fpl_app/static/js/runtime-main.799d7db4.js.map",
+    "static/css/2.d8cb5cde.chunk.css": "/fpl_app/static/css/2.d8cb5cde.chunk.css",
+    "static/js/2.92027877.chunk.js": "/fpl_app/static/js/2.92027877.chunk.js",
+    "static/js/2.92027877.chunk.js.map": "/fpl_app/static/js/2.92027877.chunk.js.map",
+    "static/js/3.2ba2c94d.chunk.js": "/fpl_app/static/js/3.2ba2c94d.chunk.js",
+    "static/js/3.2ba2c94d.chunk.js.map": "/fpl_app/static/js/3.2ba2c94d.chunk.js.map",
     "index.html": "/fpl_app/index.html",
-    "static/css/2.c7bc3a6e.chunk.css.map": "/fpl_app/static/css/2.c7bc3a6e.chunk.css.map",
-    "static/css/main.b8914b05.chunk.css.map": "/fpl_app/static/css/main.b8914b05.chunk.css.map",
-    "static/js/2.a504da41.chunk.js.LICENSE.txt": "/fpl_app/static/js/2.a504da41.chunk.js.LICENSE.txt"
+    "static/css/2.d8cb5cde.chunk.css.map": "/fpl_app/static/css/2.d8cb5cde.chunk.css.map",
+    "static/css/main.e845eb61.chunk.css.map": "/fpl_app/static/css/main.e845eb61.chunk.css.map",
+    "static/js/2.92027877.chunk.js.LICENSE.txt": "/fpl_app/static/js/2.92027877.chunk.js.LICENSE.txt",
+    "static/media/LoadingError.bacb5cd4.gif": "/fpl_app/static/media/LoadingError.bacb5cd4.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.db6566d5.js",
-    "static/css/2.c7bc3a6e.chunk.css",
-    "static/js/2.a504da41.chunk.js",
-    "static/css/main.b8914b05.chunk.css",
-    "static/js/main.973e9a62.chunk.js"
+    "static/js/runtime-main.799d7db4.js",
+    "static/css/2.d8cb5cde.chunk.css",
+    "static/js/2.92027877.chunk.js",
+    "static/css/main.e845eb61.chunk.css",
+    "static/js/main.33bbae36.chunk.js"
   ]
 }
