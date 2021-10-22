@@ -1,0 +1,18 @@
+footer {
+    text-align: center;
+    background: black;
+    color: white;
+    width: 100%;
+    padding: 10px 0px 20px;
+}
+
+.footer-section {
+    margin: 30px auto
+}
+
+footer h3,
+.footer-section a,
+.footer-copyright {
+    color: white;
+    text-transform: uppercase;
+}

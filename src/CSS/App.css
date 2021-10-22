@@ -1,0 +1,93 @@
+.table-container {
+    margin: 0px auto;
+    text-align: center;
+    width: 95%;
+}
+
+.second-table-container {
+    margin: 50px auto;
+    width: 80%;
+}
+
+.table-container table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-top: 1px solid #808080;
+}
+
+.table-container td,
+.table-container th {
+    border: 1px solid #dddddd;
+    text-align: center;
+}
+
+.table-container tr {
+    font-size: 15px;
+}
+
+.table-container tr th:nth-child(1),
+.table-container tr th:nth-child(2),
+.table-container tr th:last-of-type,
+.table-container tr td:nth-child(1),
+.table-container tr td:nth-child(2),
+.table-container tr td:last-of-type {
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.table-container tr th:nth-child(1),
+.table-container tr th:nth-child(2),
+.table-container tr td:nth-child(1),
+.table-container tr td:nth-child(2),
+.table-container tr th:last-of-type,
+.table-container tr:last-of-type td:last-of-type {
+    background-color: white;
+}
+
+.table-container tr th:nth-child(1),
+.table-container tr td:nth-child(1) {
+    min-width: 60px;
+    left: -1px;
+}
+
+.table-container tr th:nth-child(2),
+.table-container tr td:nth-child(2) {
+    min-width: 150px;
+    left: 49px;
+}
+
+.table-container tr td:last-of-type,
+.table-container tr th:last-of-type {
+    width: 100px;
+    right: -1px;
+}
+
+/** good and bad logic **/
+
+.good-week {
+    background-color: rgb(0, 80, 0) !important;
+}
+  
+.bad-week {
+    background-color: rgb(114, 0, 0) !important;
+}
+
+.good-week,
+.bad-week {
+    color: white;
+}
+
+/** transfers logic **/
+.hit-week {
+    background-color: khaki !important;
+}
+
+.neutral-week {
+    background-color: rgb(205, 205, 205);
+}
+
+@media only screen and (max-width: 640px) {
+    .table-container {
+      width: 97%;
+    }
+}
